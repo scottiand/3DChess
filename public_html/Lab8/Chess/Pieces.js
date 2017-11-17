@@ -118,7 +118,7 @@ function Knight(isWhite, letter, number) {
     this.symWhite = 'K';
     this.symBlack = 'k';
 
-    this.moveSpots = [vec2(-1, 2), vec2(1, 2), vec2(2, 1), vec2(2, -1), vec2(1, -2), vec2(-1, -2), vec2(2, -1), vec2(-2, -1)];
+    this.moveSpots = [vec2(-1, 2), vec2(1, 2), vec2(2, 1), vec2(2, -1), vec2(1, -2), vec2(-1, -2), vec2(-2, -1), vec2(-2, 1)];
 }
 
 Knight.prototype.canMove = function (board) {
@@ -151,3 +151,209 @@ Knight.prototype.symbol = function () {
         return this.symBlack;
     }
 }; 
+
+//Code for Rook
+
+function Rook(isWhite, letter, number){
+    this.model;
+    this.isWhite = isWhite;
+    this.letter = letter;
+    this.number = number;
+    this.symWhite = "R";
+    this.symBlack = "r";
+    //Pawn stuff
+    this.firstMove = true;
+    this.moveDirections = [vec2(0,1),vec2(1,0),vec2(0,-1),vec2(-1,0)]
+}
+
+Rook.prototype.move = function (letter, number) {
+    this.letter = letter;
+    this.number = number;
+    this.firstMove = false;
+};
+
+Rook.prototype.symbol = function () {
+    if(this.isWhite){
+        return this.symWhite;
+    } else {
+        return this.symBlack;
+    }
+};
+
+Rook.prototype.canMove = function (board) {
+    var spaces = [];
+
+
+    var spotLet;
+    var spotNum;
+
+    for(var i = 0; i < this.moveDirections.length; i++){
+        spotLet = this.letter + this.moveDirections[i][0];
+        spotNum = this.number + this.moveDirections[i][1];
+
+        while((isInRange(spotLet) && isInRange(spotNum)) && !board.isOccupied(spotLet,spotNum)){
+            spaces.push(vec2(spotLet, spotNum));
+            spotLet += this.moveDirections[i][0];
+            spotNum += this.moveDirections[i][1];
+        }
+        if((isInRange(spotLet) && isInRange(spotNum)) && isEnemy(board, spotLet, spotNum, this.isWhite)){
+            spaces.push(vec2(spotLet, spotNum));
+        }
+    }
+    console.log(spaces);
+    return spaces;
+
+};
+
+
+function Bishop(isWhite, letter, number){
+    this.model;
+    this.isWhite = isWhite;
+    this.letter = letter;
+    this.number = number;
+    this.symWhite = "B";
+    this.symBlack = "b";
+    this.moveDirections = [vec2(1,1),vec2(-1,1),vec2(1,-1),vec2(-1,-1)]
+}
+
+Bishop.prototype.move = function (letter, number) {
+    this.letter = letter;
+    this.number = number;
+    this.firstMove = false;
+};
+
+Bishop.prototype.symbol = function () {
+    if(this.isWhite){
+        return this.symWhite;
+    } else {
+        return this.symBlack;
+    }
+};
+
+Bishop.prototype.canMove = function (board) {
+    var spaces = [];
+
+
+    var spotLet;
+    var spotNum;
+
+    for(var i = 0; i < this.moveDirections.length; i++){
+        spotLet = this.letter + this.moveDirections[i][0];
+        spotNum = this.number + this.moveDirections[i][1];
+
+        while((isInRange(spotLet) && isInRange(spotNum)) && !board.isOccupied(spotLet,spotNum)){
+            spaces.push(vec2(spotLet, spotNum));
+            spotLet += this.moveDirections[i][0];
+            spotNum += this.moveDirections[i][1];
+        }
+        if((isInRange(spotLet) && isInRange(spotNum)) && isEnemy(board, spotLet, spotNum, this.isWhite)){
+            spaces.push(vec2(spotLet, spotNum));
+        }
+    }
+    console.log(spaces);
+    return spaces;
+
+};
+
+
+function Queen(isWhite, letter, number){
+    this.model;
+    this.isWhite = isWhite;
+    this.letter = letter;
+    this.number = number;
+    this.symWhite = "Q";
+    this.symBlack = "q";
+    this.moveDirections = [vec2(1,1),vec2(-1,1),vec2(1,-1),vec2(-1,-1),vec2(0,1),vec2(1,0),vec2(0,-1),vec2(-1,0)]
+}
+
+Queen.prototype.move = function (letter, number) {
+    this.letter = letter;
+    this.number = number;
+    this.firstMove = false;
+};
+
+Queen.prototype.symbol = function () {
+    if(this.isWhite){
+        return this.symWhite;
+    } else {
+        return this.symBlack;
+    }
+};
+
+Queen.prototype.canMove = function (board) {
+    var spaces = [];
+
+
+    var spotLet;
+    var spotNum;
+
+    for(var i = 0; i < this.moveDirections.length; i++){
+        spotLet = this.letter + this.moveDirections[i][0];
+        spotNum = this.number + this.moveDirections[i][1];
+
+        while((isInRange(spotLet) && isInRange(spotNum)) && !board.isOccupied(spotLet,spotNum)){
+            spaces.push(vec2(spotLet, spotNum));
+            spotLet += this.moveDirections[i][0];
+            spotNum += this.moveDirections[i][1];
+        }
+        if((isInRange(spotLet) && isInRange(spotNum)) && isEnemy(board, spotLet, spotNum, this.isWhite)){
+            spaces.push(vec2(spotLet, spotNum));
+        }
+    }
+    console.log(spaces);
+    return spaces;
+
+};
+
+
+function King(isWhite, letter, number){
+    this.model;
+    this.isWhite = isWhite;
+    this.letter = letter;
+    this.number = number;
+    this.symWhite = "T";
+    this.symBlack = "t";
+    this.moveDirections = [vec2(1,1),vec2(-1,1),vec2(1,-1),vec2(-1,-1),vec2(0,1),vec2(1,0),vec2(0,-1),vec2(-1,0)]
+}
+
+King.prototype.move = function (letter, number) {
+    this.letter = letter;
+    this.number = number;
+    this.firstMove = false;
+};
+
+King.prototype.symbol = function () {
+    if(this.isWhite){
+        return this.symWhite;
+    } else {
+        return this.symBlack;
+    }
+};
+
+King.prototype.canMove = function (board) {
+    var spaces = [];
+
+
+    var spotLet;
+    var spotNum;
+
+    for(var i = 0; i < this.moveDirections.length; i++){
+        spotLet = this.letter + this.moveDirections[i][0];
+        spotNum = this.number + this.moveDirections[i][1];
+
+        // while((isInRange(spotLet) && isInRange(spotNum)) && !board.isOccupied(spotLet,spotNum)){
+        //     spaces.push(vec2(spotLet, spotNum));
+        //     spotLet += this.moveDirections[i][0];
+        //     spotNum += this.moveDirections[i][1];
+        // }
+
+
+
+        if((isInRange(spotLet) && isInRange(spotNum)) && (isEnemy(board, spotLet, spotNum, this.isWhite) || !board.isOccupied(spotLet,spotNum))){
+            spaces.push(vec2(spotLet, spotNum));
+        }
+    }
+    console.log(spaces);
+    return spaces;
+
+};

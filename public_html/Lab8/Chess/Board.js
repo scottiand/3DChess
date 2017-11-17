@@ -14,12 +14,35 @@ function Board() {
         this.set(new Pawn(false, i, 6), i, 6);
     }
     //White pieces
+    //Rooks
+    this.set(new Rook(true,0,0),0,0);
+    this.set(new Rook(true,7,0),7,0);
+    //Knights
     this.set(new Knight(true,1,0),1,0);
     this.set(new Knight(true,6,0),6,0);
+    //Bishops
+    this.set(new Bishop(true,2,0),2,0);
+    this.set(new Bishop(true,5,0),5,0);
+    //Queen
+    this.set(new Queen(true, 3,0),3,0);
+    //King
+    this.set(new King(true, 4, 0),4,0);
     
     //Black Pieces
+    //Rooks
+    this.set(new Rook(false,0,7),0,7);
+    this.set(new Rook(false,7,7),7,7);
+    //Knights
     this.set(new Knight(false,1,7),1,7);
     this.set(new Knight(false,6,7),6,7);
+    //Bishops
+    this.set(new Bishop(false,2,7),2,7);
+    this.set(new Bishop(false,5,7),5,7);
+    //Queen
+    this.set(new Queen(false, 4,7),4,7);
+    //King
+    this.set(new King(false, 3, 7),3,7);
+    
     
     this.print();
 }
