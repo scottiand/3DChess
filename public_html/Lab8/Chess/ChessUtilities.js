@@ -89,3 +89,4 @@ function isFriend(board, letter, number, isWhite) {
         return board.get(letter, number).isWhite === isWhite;
     }
 }
+

@@ -5,13 +5,21 @@
 
 function Board() {
     this.grid = new boardMatrix();
+    this.whiteTurn = true;
     this.whiteTaken = [];
     this.blackTaken = [];
-    //console.log(this.grid);
-    for (var i = 0; i < 8; i++) {
+    
+    for (var i = 0; i < 8; i++) { // Add Pieces to the board
         this.set(new Pawn(true, i, 1), i, 1);
         this.set(new Pawn(false, i, 6), i, 6);
     }
+    //White pieces
+    this.set(new Knight(true,1,0),1,0);
+    this.set(new Knight(true,6,0),6,0);
+    
+    //Black Pieces
+    this.set(new Knight(false,1,7),1,7);
+    this.set(new Knight(false,6,7),6,7);
     
     this.print();
 }
@@ -59,7 +67,7 @@ Board.prototype.keyAction = function (key) {
         var num1 = parseInt(strings[0].charAt(1)) - 1;
         var let2 = letterToNumber(strings[1].charAt(0));
         var num2 = parseInt(strings[1].charAt(1)) - 1;
-        this.makeMove(true,let1,num1,let2,num2); // Take a turn
+        this.makeMove(this.whiteTurn,let1,num1,let2,num2); // Take a turn
     }
 };
 
@@ -85,6 +93,7 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             movingPiece.move(let2, num2);
             this.remove(let1, num1); // remove the original
             this.print();
+            this.whiteTurn = !this.whiteTurn;
         } else {
             console.log("Invalid Move! Cannot move there!");
         }

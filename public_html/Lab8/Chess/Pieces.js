@@ -59,14 +59,14 @@ Pawn.prototype.canMove = function (board) {
     if (isInRange(nextNumber)) {
         // Check spot in front of pawn
         if (!board.isOccupied(this.letter, nextNumber)) {
-            spaces.push(new vec2(this.letter, nextNumber));
+            spaces.push(vec2(this.letter, nextNumber));
         }
         // If it hasn't moved, check two spaces in front
         nextNumber = nextNumber + direction;
         if (isInRange(nextNumber)) {
             if (this.firstMove) {
                 if (!board.isOccupied(this.letter, nextNumber)) {
-                    spaces.push(new vec2(this.letter, nextNumber));
+                    spaces.push(vec2(this.letter, nextNumber));
                 }
             }
         }
@@ -109,3 +109,45 @@ Pawn.prototype.symbol = function () {
         return this.symBlack;
     }
 };
+
+function Knight(isWhite, letter, number) {
+    this.model;
+    this.isWhite = isWhite;
+    this.letter = letter;
+    this.number = number;
+    this.symWhite = 'K';
+    this.symBlack = 'k';
+
+    this.moveSpots = [vec2(-1, 2), vec2(1, 2), vec2(2, 1), vec2(2, -1), vec2(1, -2), vec2(-1, -2), vec2(2, -1), vec2(-2, -1)];
+}
+
+Knight.prototype.canMove = function (board) {
+    var spaces = [];
+
+    for (var i = 0; i < this.moveSpots.length; i++) {
+
+        var spotLet = this.letter + this.moveSpots[i][0];
+        var spotNum = this.number + this.moveSpots[i][1];
+        if (isInRange(spotLet) && isInRange(spotNum)) {
+            if (!board.isOccupied(spotLet, spotNum) || isEnemy(board, spotLet, spotNum, this.isWhite)) {
+                spaces.push(vec2(spotLet, spotNum));
+            }
+        }
+
+    }//Check each spot
+
+    return spaces;
+};
+
+Knight.prototype.move = function (letter, number) {
+    this.letter = letter;
+    this.number = number;
+};
+
+Knight.prototype.symbol = function () {
+    if (this.isWhite) {
+        return this.symWhite;
+    } else {
+        return this.symBlack;
+    }
+}; 
