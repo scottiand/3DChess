@@ -200,7 +200,6 @@ Rook.prototype.canMove = function (board) {
             spaces.push(vec2(spotLet, spotNum));
         }
     }
-    console.log(spaces);
     return spaces;
 
 };
@@ -250,7 +249,6 @@ Bishop.prototype.canMove = function (board) {
             spaces.push(vec2(spotLet, spotNum));
         }
     }
-    console.log(spaces);
     return spaces;
 
 };
@@ -300,7 +298,7 @@ Queen.prototype.canMove = function (board) {
             spaces.push(vec2(spotLet, spotNum));
         }
     }
-    console.log(spaces);
+
     return spaces;
 
 };
@@ -353,7 +351,6 @@ King.prototype.canMove = function (board) {
             spaces.push(vec2(spotLet, spotNum));
         }
     }
-    console.log(spaces);
     return spaces;
 
 };
