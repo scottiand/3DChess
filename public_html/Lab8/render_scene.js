@@ -127,5 +127,7 @@ function render()
     gl.uniform4fv(uColor, vec4(0, 0, 0, 1));  // set color to black
     Shapes.drawPrimitive(Shapes.cube);
     stack.pop();
+    
+    board.drawBoard();
 }
 

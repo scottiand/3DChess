@@ -13,6 +13,33 @@ function boardMatrix() {
     }
 }
 
+
+
+
+function boardColorMatrix() {
+    this.grid = [];
+    for (var i = 0; i < 8; i++) {
+       this.grid[i] = [];
+       for (var j = 0; j < 8; j++) {
+           if (i % 2 === 0) {
+               if (j % 2 === 0){
+                   this.grid[i][j] = vec4(0,0,0,1);
+               } else {
+                   this.grid[i][j] = vec4(1,1,1,1);
+               }
+           } else {
+               if (!(j % 2 === 0)){
+                   this.grid[i][j] = vec4(0,0,0,1);
+               }  else {
+                   this.grid[i][j] = vec4(1,1,1,1);
+               }
+           }
+
+       }
+   }
+   console.log(this.grid);
+}
+
 boardMatrix.prototype.get = function (letter, number) {
     if (letter < 0 || letter > 7) {
         console.log("Letter out of range:" + letter, + ", " + number);

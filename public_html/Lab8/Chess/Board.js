@@ -5,6 +5,7 @@
 
 function Board() {
     this.grid = new boardMatrix();
+    this.boardColorMat = new boardColorMatrix();
     this.whiteTurn = true;
     this.whiteTaken = [];
     this.blackTaken = [];
@@ -176,4 +177,22 @@ Board.prototype.copy = function () {
     return newBoard;
 };
 
+Board.prototype.drawBoard = function () {
+    stack.push();
+    stack.multiply(scalem(1,0.25,1));
 
+    for(var i = 0; i < this.boardColorMat.length; i++){
+        for(var j = 0; j < this.boardColorMat.length; j++){
+
+            stack.push();
+            stack.multiply(translate(i*2,0,j*2));
+            gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+            gl.uniform4fv(uColor,(this.boardColorMat[i][j]));
+            Shapes.drawPrimitive(Shapes.cube); // cube
+            stack.pop();
+
+        }
+    }
+
+  stack.pop();
+};
