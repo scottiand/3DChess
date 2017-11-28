@@ -37,6 +37,7 @@ function boardColorMatrix() {
 
        }
    }
+   return this.grid;
    console.log(this.grid);
 }
 

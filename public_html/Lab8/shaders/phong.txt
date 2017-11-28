@@ -1,0 +1,75 @@
+// Ruvim Kondratyev 
+// Computer Graphics Class 
+// Fall 2017 
+// Willamette University 
+// Professor Genevieve Orr 
+
+precision mediump float; 
+
+struct MaterialParam { 
+	bool usingTexture; // true: texture; false: color; 
+	vec4 color; 
+	sampler2D texture; 
+}; 
+
+struct LightParam { 
+	vec3 position; 
+	vec3 rgbDiffuse; 
+	vec3 rgbSpecular; 
+}; 
+
+// Phong parameters: 
+uniform MaterialParam uAmbient; 
+uniform MaterialParam uDiffuse; 
+uniform MaterialParam uSpecular; 
+uniform float uShininess; 
+uniform vec4 uIntensityAmbient; // Ambient coefficient for the whole scene, between 0 and 1. 
+
+// Light sources: 
+uniform int uLightCount; 
+uniform LightParam uLights [16]; 
+
+// We get these from the vertex shader: 
+varying vec4 position; 
+varying vec3 normal; 
+varying vec2 tex; 
+
+vec4 mySample (sampler2D sampler, vec2 coord) { 
+	// vec2 corrected = vec2 (coord.s / 2.0, coord.t / 2.0); 
+	// vec2 corrected = vec2 (clamp (coord.s, 0.0, 1.0), clamp (coord.t, 0.0, 1.0)); 
+	// vec2 corrected = vec2 (clamp (1.0 - coord.s, 0.0, 1.0), clamp (coord.t, 0.0, 1.0)); 
+	vec2 corrected = vec2 (clamp (coord.s, 0.0, 1.0), clamp (1.0 - coord.t, 0.0, 1.0)); 
+	// vec2 corrected = vec2 (clamp (1.0 - coord.s, 0.0, 1.0), clamp (1.0 - coord.t, 0.0, 1.0)); 
+	return texture2D (sampler, corrected); 
+} 
+
+vec4 getAmbientVector () { return uAmbient.usingTexture ? mySample (uAmbient.texture, tex) : uAmbient.color; } 
+vec4 getDiffuseVector () { return uDiffuse.usingTexture ? mySample (uDiffuse.texture, tex) : uDiffuse.color; } 
+vec4 getSpecularVector () { return uSpecular.usingTexture ? mySample (uSpecular.texture, tex) : uSpecular.color; } 
+
+void main (void) { 
+	vec4 result = getAmbientVector () * uIntensityAmbient; // Start by setting this to the ambient. 
+	vec4 kd = getDiffuseVector (); 
+	vec4 ks = getSpecularVector (); 
+	vec3 N = normalize (normal); // "fN" from lab 5; 
+	vec3 V = normalize (-position.xyz); // Direction of viewer (remember that 'position' is in camera coordinates). // i.e., "fE" from lab 5; 
+	// Then add things to it: 
+	for (int i = 0; i < 16; i++) { 
+		if (i >= uLightCount) break; // Finish loop if all lights have been added. 
+		vec3 L = normalize (uLights[i].position - position.xyz); // Direction of light compared to this point. 
+		vec3 H = normalize (L + V); // Half-way vector. 
+		float diffDot = max (0.0, dot (L, N)); 
+		float specDot = max (0.0, dot (L, H)); 
+		float specPow = pow (specDot, uShininess); 
+		result.rgb += kd.rgb * kd.a * diffDot * uLights[i].rgbDiffuse + ks.rgb * ks.a * specPow * uLights[i].rgbSpecular; 
+	} 
+	// if (result.a == 0.0) discard; 
+	result.a = 1.0; 
+	gl_FragColor = result; 
+	
+	// gl_FragColor.rgb = vec3 (tex.s, 0.0, tex.t); 
+	
+	// gl_FragColor = texture2D (uDiffuse.texture, tex); 
+	// gl_FragColor = vec4 (1, 0, 0, 1); 
+} 
+

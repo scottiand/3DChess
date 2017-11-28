@@ -34,7 +34,7 @@
 
 function Pawn(isWhite, letter, number) {
     //Universal piece stuff
-    this.model;
+    this.model = pieceShapes.pawnModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;
@@ -111,7 +111,7 @@ Pawn.prototype.symbol = function () {
 };
 
 function Knight(isWhite, letter, number) {
-    this.model;
+    this.model = pieceShapes.knightModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;
@@ -155,7 +155,7 @@ Knight.prototype.symbol = function () {
 //Code for Rook
 
 function Rook(isWhite, letter, number){
-    this.model;
+    this.model = pieceShapes.rookModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;
@@ -206,7 +206,7 @@ Rook.prototype.canMove = function (board) {
 
 
 function Bishop(isWhite, letter, number){
-    this.model;
+    this.model = pieceShapes.bishopModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;
@@ -255,7 +255,7 @@ Bishop.prototype.canMove = function (board) {
 
 
 function Queen(isWhite, letter, number){
-    this.model;
+    this.model = pieceShapes.queenModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;
@@ -305,7 +305,7 @@ Queen.prototype.canMove = function (board) {
 
 
 function King(isWhite, letter, number){
-    this.model;
+    this.model = pieceShapes.kingModel;
     this.isWhite = isWhite;
     this.letter = letter;
     this.number = number;

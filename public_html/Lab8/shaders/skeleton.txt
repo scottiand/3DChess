@@ -1,0 +1,33 @@
+// Ruvim Kondratyev 
+// Computer Graphics Class 
+// Fall 2017 
+// Willamette University 
+// Professor Genevieve Orr 
+
+precision mediump float; 
+
+uniform mat4 u_projection; // Projection matrix. 
+uniform mat4 u_model_view; // Modelview matrix --> this goes IN ADDITION to the transforms done by skeleton bones. 
+
+attribute vec4 a_vertex; 
+attribute vec3 a_normal; 
+attribute vec2 a_tex; 
+
+varying vec4 position; 
+varying vec3 normal; 
+varying vec2 tex; 
+
+void main (void) { 
+	// Just the position: 
+	position = u_model_view * a_vertex; 
+	tex = a_tex; 
+	
+	// Transform the normals (tricky, since our matrix is a mat4, but the normals are all vec3): 
+	vec4 normal4 = vec4 (a_normal.xyz, 0); 
+	normal4 = u_model_view * normal4; 
+	normal = normal4.xyz; 
+	
+	// The position that goes into the OpenGL system is transformed, but then also projected: 
+	gl_Position = u_projection * position; 
+} 
+

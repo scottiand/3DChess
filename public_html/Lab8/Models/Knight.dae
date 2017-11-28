@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0 commit date:2017-09-11, commit time:10:43, hash:5bd8ac9</authoring_tool>
+    </contributor>
+    <created>2017-11-15T18:17:13</created>
+    <modified>2017-11-15T18:17:13</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera-camera" name="Camera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">49.13434</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <YF_dofdist sid="YF_dofdist" type="float">0</YF_dofdist>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="Lamp-light" name="Lamp">
+      <technique_common>
+        <point>
+          <color sid="color">1 1 1</color>
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0.00111109</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <extra>
+        <technique profile="blender">
+          <type sid="type" type="int">0</type>
+          <flag sid="flag" type="int">0</flag>
+          <mode sid="mode" type="int">8192</mode>
+          <gamma sid="blender_gamma" type="float">1</gamma>
+          <red sid="red" type="float">1</red>
+          <green sid="green" type="float">1</green>
+          <blue sid="blue" type="float">1</blue>
+          <shadow_r sid="blender_shadow_r" type="float">0</shadow_r>
+          <shadow_g sid="blender_shadow_g" type="float">0</shadow_g>
+          <shadow_b sid="blender_shadow_b" type="float">0</shadow_b>
+          <energy sid="blender_energy" type="float">1</energy>
+          <dist sid="blender_dist" type="float">29.99998</dist>
+          <spotsize sid="spotsize" type="float">75</spotsize>
+          <spotblend sid="spotblend" type="float">0.15</spotblend>
+          <halo_intensity sid="blnder_halo_intensity" type="float">1</halo_intensity>
+          <att1 sid="att1" type="float">0</att1>
+          <att2 sid="att2" type="float">1</att2>
+          <falloff_type sid="falloff_type" type="int">2</falloff_type>
+          <clipsta sid="clipsta" type="float">1.000799</clipsta>
+          <clipend sid="clipend" type="float">30.002</clipend>
+          <bias sid="bias" type="float">1</bias>
+          <soft sid="soft" type="float">3</soft>
+          <compressthresh sid="compressthresh" type="float">0.04999995</compressthresh>
+          <bufsize sid="bufsize" type="int">2880</bufsize>
+          <samp sid="samp" type="int">3</samp>
+          <buffers sid="buffers" type="int">1</buffers>
+          <filtertype sid="filtertype" type="int">0</filtertype>
+          <bufflag sid="bufflag" type="int">0</bufflag>
+          <buftype sid="buftype" type="int">2</buftype>
+          <ray_samp sid="ray_samp" type="int">1</ray_samp>
+          <ray_sampy sid="ray_sampy" type="int">1</ray_sampy>
+          <ray_sampz sid="ray_sampz" type="int">1</ray_sampz>
+          <ray_samp_type sid="ray_samp_type" type="int">0</ray_samp_type>
+          <area_shape sid="area_shape" type="int">1</area_shape>
+          <area_size sid="area_size" type="float">0.1</area_size>
+          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
+          <area_sizez sid="area_sizez" type="float">1</area_sizez>
+          <adapt_thresh sid="adapt_thresh" type="float">0.000999987</adapt_thresh>
+          <ray_samp_method sid="ray_samp_method" type="int">1</ray_samp_method>
+          <shadhalostep sid="shadhalostep" type="int">0</shadhalostep>
+          <sun_effect_type sid="sun_effect_type" type="int">0</sun_effect_type>
+          <skyblendtype sid="skyblendtype" type="int">1</skyblendtype>
+          <horizon_brightness sid="horizon_brightness" type="float">1</horizon_brightness>
+          <spread sid="spread" type="float">1</spread>
+          <sun_brightness sid="sun_brightness" type="float">1</sun_brightness>
+          <sun_size sid="sun_size" type="float">1</sun_size>
+          <backscattered_light sid="backscattered_light" type="float">1</backscattered_light>
+          <sun_intensity sid="sun_intensity" type="float">1</sun_intensity>
+          <atm_turbidity sid="atm_turbidity" type="float">2</atm_turbidity>
+          <atm_extinction_factor sid="atm_extinction_factor" type="float">1</atm_extinction_factor>
+          <atm_distance_factor sid="atm_distance_factor" type="float">1</atm_distance_factor>
+          <skyblendfac sid="skyblendfac" type="float">1</skyblendfac>
+          <sky_exposure sid="sky_exposure" type="float">1</sky_exposure>
+          <sky_colorspace sid="sky_colorspace" type="int">0</sky_colorspace>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_images/>
+  <library_geometries>
+    <geometry id="PM3D_CHESS_SET_3_heavy-mesh" name="PM3D CHESS SET 3 heavy">
+      <mesh>
+        <source id="PM3D_CHESS_SET_3_heavy-mesh-positions">
+          <float_array id="PM3D_CHESS_SET_3_heavy-mesh-positions-array" count="216">-0.7476803 -0.4371564 0.5243768 -0.9642369 -0.5771932 0.8090901 -1.220188 -0.5635688 0.5191705 -1.569126 0.357608 0.5179259 -1.717114 -0.05577564 0.5230675 -1.718084 0.2686979 0.8164736 -0.5663533 0.2891055 2.29662 -0.7760776 0.2982658 2.591904 -0.419076 0.1015747 2.342571 -0.648066 0.3284118 1.837037 -1.532059 -0.4134094 0.5243512 -1.257185 -0.4956675 1.298716 -1.755571 -0.1700882 0.9209199 -1.099149 0.5601648 1.333107 -1.01052 0.3257104 1.840135 -0.9137099 -0.7799207 0.02082514 -1.766066 0.4556206 -0.004851937 -0.4327897 0.2018262 0.002845823 -0.5503384 0.02378976 1.220868 -0.7622109 0.4416515 1.188341 -1.791139 -0.4523583 0.0178076 -0.8664202 0.5996521 0.7339783 -1.224756 0.7808914 0.02735829 -0.9853902 -0.28771 1.861286 -1.773556 -0.2058678 2.296814 -1.449907 -0.176763 1.981684 -0.3518024 0.009282886 2.26975 -0.7490398 -0.3717934 1.188272 -0.8511402 0.4523012 0.5171833 -0.5976243 -0.01422673 0.5187188 -0.4384095 0.2242122 0.381056 -0.5056095 -0.3331674 0.3865653 -0.61087 -0.359933 0.207857 -0.8874263 -0.7105752 0.3841702 -1.646986 0.2393495 1.936111 -1.80623 0.248519 2.267923 -1.129853 0.2762296 2.368281 -0.6376695 -0.2863521 2.397603 -1.235964 -0.04954701 2.485416 -1.716374 -0.3517047 0.2104534 -1.509012 -0.7049563 0.06295925 -1.487432 0.4304501 1.317537 -1.597907 -0.1573112 1.408385 -1.258216 -0.1433462 1.843634 -0.837849 0.1349335 2.619131 -0.9064015 -0.006598591 2.648712 -0.4975202 0.01404517 2.657609 -1.656663 0.03487688 2.412365 -1.743812 -0.2116819 2.046333 -0.6537007 -0.2971987 1.839306 -0.5622173 0.2095069 0.7178821 -0.4648934 0.02679163 0.8175089 -1.266392 0.6022379 0.8565195 -1.266873 0.5260561 0.5075647 -1.445323 0.5772695 0.2100051 -1.722552 0.4651926 0.3929384 -1.119854 0.7389915 0.3980262 -1.784527 0.1120811 0.2122802 -1.937127 0.05898416 0.07573825 -1.366424 -0.6205062 0.2076414 -1.251339 0.1623696 1.832048 -1.695272 0.1466029 1.28725 -1.400619 -0.7083885 0.375635 -1.434694 0.2555544 2.004759 -0.4324003 -0.3007619 0.06866532 -0.9889206 -0.632504 0.2098278 -0.529336 0.1195102 0.2178038 -0.7881376 0.6826095 0.09535425 -0.8488299 0.5543288 0.2016194 -1.8896 0.01950848 0.3759682 -1.750049 -0.4547026 0.4074196 -0.7471594 -0.1862668 2.606136</float_array>
+          <technique_common>
+            <accessor source="#PM3D_CHESS_SET_3_heavy-mesh-positions-array" count="72" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="PM3D_CHESS_SET_3_heavy-mesh-normals">
+          <float_array id="PM3D_CHESS_SET_3_heavy-mesh-normals-array" count="420">0.251864 -0.9304655 -0.2660797 -0.8839721 0.3121254 -0.3480963 0.6495768 0.618493 0.4421725 0.7938461 0.6014665 -0.08970284 -0.611217 -0.7800195 0.1341034 -0.00317198 0.9074427 0.4201639 0.002092003 -0.01933491 -0.9998109 0.8879894 0.4397829 -0.1344099 -0.005815684 -0.02478736 -0.9996758 -0.8674446 -0.4496186 -0.2130331 0.2889401 0.9413503 0.1742795 0.01865357 0.06773829 -0.9975288 -0.3093624 -0.8638747 -0.3975117 0.8856984 -0.4305813 -0.1736032 0.4168789 0.2294312 0.8795302 0.8635634 -0.1089811 -0.4923226 0.6727272 -0.6787168 -0.2945874 -0.03436422 0.9984367 -0.04408341 -0.07510697 -0.9958594 0.05121672 0.7034237 0.7107708 3.00807e-4 -0.1510195 0.3776609 0.9135455 -0.6077267 -0.5822363 0.540064 -0.2999904 0.844799 0.4430806 -0.5508527 -0.7013422 0.4524164 -0.03229647 0.2194415 0.975091 -0.03709435 0.5417566 0.8397165 -0.8972103 0.0867989 -0.4329892 0.5460869 -0.06732904 0.8350186 0.7173374 -0.6966902 -0.007062673 -0.4324814 -0.7575381 0.4889745 0.7323797 -0.6802655 -0.02930748 0.7237213 0.3914066 -0.5683559 0.8366478 -0.5449361 0.05536431 -0.5900114 0.8055549 -0.05447977 -0.05890411 0.9753093 -0.212843 -0.4121763 0.9085637 -0.06799149 -0.6116331 0.4427801 -0.65563 -0.6086587 0.4470239 0.6555182 -0.8308115 -0.2909467 0.4744497 -0.4142587 -0.5469296 0.727501 -0.065822 -0.8321692 0.5506014 -0.1422221 -0.9866618 0.07919186 0.1131356 -0.9669041 0.2286852 -0.7751421 0.04132729 0.6304338 -0.9947999 0.0666598 -0.07700431 -0.7881964 -0.007233738 0.6153814 -0.5387669 -0.6964564 -0.474003 0.1250293 -0.5025691 0.8554485 0.1298785 0.989618 0.06154596 -0.007116615 0.9992257 0.03869771 -0.1885893 -0.1947402 -0.9625542 0.3046615 0.04007041 -0.9516175 0.2219762 -0.1264436 -0.9668189 0.4445781 -0.6118914 0.6541706 0.9024688 0.05662178 0.4270178 0.5026725 0.3979167 0.767452 0.8774197 0.4563907 0.1477911 0.8726837 -0.453304 0.1814903 -0.5876258 0.1903051 0.7864351 -0.6789482 -0.1521641 0.7182448 -0.01492381 -0.6944314 0.7194042 -0.4287568 -0.2187108 0.8765463 -0.4494643 0.386069 0.8055636 0.1584519 0.8217582 -0.5473632 0.7327967 0.5856661 -0.3464161 -0.5305975 0.2001944 0.8236436 -0.2578435 0.552851 0.7923842 0.4764478 -0.6649823 -0.5751488 0.003921866 -0.8864002 -0.4629032 0.5804181 -0.7818474 0.2276614 0.0350719 0.6276449 0.7777095 -0.5050237 0.8112818 0.2945724 0.05479234 0.4265819 0.9027878 0.5407273 0.700437 0.465835 0.0190851 0.741429 -0.6707599 0.6019647 0.7940866 0.08405417 -0.0792455 0.9968075 0.0097602 -0.9919268 0.1025121 0.0746504 -0.5947847 0.8037574 0.01432651 -0.9901661 -0.07855957 -0.1157561 -0.9077845 -0.2874037 -0.305494 -0.6445235 -0.09769862 0.758317 -0.2254527 -0.3304296 0.9165082 0.8819829 -0.317587 -0.3482025 0.5760849 -0.5864287 0.5694099 0.6331055 0.441525 -0.6357934 0.9009854 -0.1447361 -0.4089951 0.544411 -0.1822038 0.8187909 0.717572 -0.07967454 0.6919121 0.5920132 -0.6431599 0.4856603 0.6354673 -0.1238787 0.7621256 0.8678051 0.3789846 0.3213797 0.7482247 0.650052 -0.1326357 -0.009105503 -0.2382091 0.9711713 0.2844157 0.9031025 0.3217357 -0.8671452 0.338914 -0.364961 -0.8047569 -0.1159656 -0.582167 -0.1332845 0.9880324 0.07763528 -0.6671193 0.06309384 -0.7422742 0.8754822 0.2365629 -0.4213894 0.02818149 0.6503717 0.7590933 -0.5822677 -0.01770734 -0.8128043 -0.3310673 -0.7026721 -0.6297988 -0.8021026 0.5674692 0.1860379 -0.6979571 0.4517711 0.5556607 -0.02725207 -0.9994245 0.02019912 -0.003734648 -0.9373719 0.3483105 -0.432307 -0.8998681 0.05786478 -0.2815582 -0.6103235 0.7404258 -0.1034196 -0.2858024 -0.9526917 0.9491698 0.2926377 -0.115931 0.7888433 0.6137346 0.03249722 0.6990473 -0.4283173 0.5726057 -0.1127046 -0.5830957 0.8045477 -0.4038791 -0.01167523 -0.9147379 -0.6824259 0.4163825 0.6007667 0.6122365 -0.7867472 0.07871192 0.7119097 -0.7018665 -0.023835 -0.4267458 0.3034147 0.8519552 -0.05595517 0.9983847 -0.009859979 -0.5008115 0.4326668 0.7496582 0.03015398 0.9965446 0.07739359 -0.3178417 0.9281935 0.1934777 -0.6479426 -0.7265721 0.2286119 -0.9350499 -0.1771677 0.3070721 -0.3752436 0.5886854 -0.7159901 -0.47493 0.6720801 0.5681108 -0.2745482 -0.4823858 0.8318217 -0.5488887 -0.6985229 -0.4591155 -0.4831681 0.8555192 -0.1861068 -0.3054125 0.5938007 0.744395 0.7383028 0.4488082 0.5034682 0.2185955 0.3377196 -0.9155116 -0.02874469 -0.7937025 0.6076267 -0.02688813 -0.9180852 -0.3954701 -0.3203151 -0.9086354 0.2679182 -0.3355358 -0.4882919 0.8055972 0.1261304 -0.9912862 0.03798693 0.8246498 0.5366801 0.1786825 -0.698117 -0.004676759 0.7159685</float_array>
+          <technique_common>
+            <accessor source="#PM3D_CHESS_SET_3_heavy-mesh-normals-array" count="140" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="PM3D_CHESS_SET_3_heavy-mesh-vertices">
+          <input semantic="POSITION" source="#PM3D_CHESS_SET_3_heavy-mesh-positions"/>
+        </vertices>
+        <triangles count="140">
+          <input semantic="VERTEX" source="#PM3D_CHESS_SET_3_heavy-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#PM3D_CHESS_SET_3_heavy-mesh-normals" offset="1"/>
+          <p>0 0 1 0 2 0 3 1 4 1 5 1 6 2 7 2 8 2 9 3 6 3 8 3 10 4 11 4 12 4 13 5 14 5 9 5 15 6 16 6 17 6 8 7 18 7 19 7 20 8 16 8 15 8 4 9 10 9 12 9 21 10 13 10 9 10 17 11 16 11 22 11 23 12 24 12 25 12 18 13 26 13 27 13 28 14 29 14 30 14 31 15 32 15 30 15 32 16 31 16 33 16 34 17 35 17 36 17 23 18 37 18 24 18 19 19 9 19 8 19 38 20 36 20 35 20 39 21 20 21 40 21 14 22 13 22 41 22 42 23 11 23 43 23 44 24 45 24 46 24 47 25 38 25 35 25 34 26 48 26 35 26 8 27 7 27 44 27 26 28 37 28 49 28 11 29 23 29 43 29 27 30 26 30 49 30 28 31 50 31 29 31 51 32 27 32 0 32 52 33 3 33 5 33 53 34 52 34 21 34 54 35 55 35 56 35 55 36 54 36 57 36 57 37 54 37 16 37 39 38 58 38 20 38 59 39 39 39 40 39 15 40 59 40 40 40 2 41 1 41 11 41 1 42 49 42 11 42 60 43 61 43 43 43 4 44 12 44 5 44 61 45 42 45 43 45 59 46 62 46 39 46 0 47 2 47 33 47 9 48 7 48 6 48 9 49 14 49 7 49 34 50 25 50 48 50 25 51 34 51 63 51 64 52 15 52 17 52 32 53 65 53 15 53 64 54 17 54 66 54 66 55 67 55 68 55 19 56 18 56 50 56 51 57 18 57 27 57 4 58 55 58 69 58 4 59 69 59 70 59 33 60 2 60 62 60 4 61 70 61 10 61 45 62 44 62 38 62 28 63 53 63 21 63 50 64 28 64 21 64 3 65 55 65 4 65 3 66 56 66 55 66 33 67 65 67 32 67 33 68 62 68 59 68 71 69 26 69 46 69 68 70 67 70 54 70 54 71 22 71 16 71 28 72 56 72 53 72 28 73 30 73 56 73 68 74 54 74 56 74 30 75 68 75 56 75 34 76 36 76 63 76 12 77 61 77 5 77 52 78 5 78 41 78 48 79 24 79 35 79 70 80 69 80 39 80 57 81 58 81 39 81 38 82 47 82 24 82 29 83 51 83 0 83 33 84 31 84 0 84 30 85 66 85 68 85 30 86 32 86 66 86 29 87 0 87 31 87 29 88 31 88 30 88 32 89 15 89 64 89 66 90 32 90 64 90 8 91 46 91 26 91 18 92 8 92 26 92 71 93 46 93 45 93 46 94 8 94 44 94 69 95 55 95 57 95 69 96 57 96 39 96 14 97 63 97 7 97 25 98 63 98 60 98 29 99 50 99 51 99 54 100 67 100 22 100 43 101 25 101 60 101 23 102 25 102 43 102 5 103 61 103 41 103 61 104 60 104 41 104 23 105 49 105 37 105 11 106 49 106 23 106 2 107 11 107 10 107 70 108 2 108 10 108 40 109 20 109 15 109 21 110 9 110 19 110 19 111 50 111 21 111 26 112 71 112 37 112 24 113 37 113 38 113 20 114 58 114 16 114 57 115 16 115 58 115 27 116 1 116 0 116 27 117 49 117 1 117 38 118 44 118 7 118 63 119 36 119 7 119 38 120 7 120 36 120 21 121 52 121 13 121 52 122 41 122 13 122 12 123 11 123 42 123 12 124 42 124 61 124 14 125 60 125 63 125 14 126 41 126 60 126 70 127 62 127 2 127 39 128 62 128 70 128 3 129 52 129 53 129 53 130 56 130 3 130 66 131 17 131 67 131 17 132 22 132 67 132 15 133 65 133 59 133 65 134 33 134 59 134 37 135 71 135 38 135 45 136 38 136 71 136 48 137 25 137 24 137 50 138 18 138 51 138 47 139 35 139 24 139</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Camera" name="Camera" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.481132 0.7276763 0.3054208 -0.6141704 -6.50764 0 0.8953956 0.4452714 5.343665 0 0 0 1</matrix>
+        <instance_camera url="#Camera-camera"/>
+      </node>
+      <node id="Lamp" name="Lamp" type="NODE">
+        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 4.076245 0.9551712 -0.1998834 0.2183912 1.005454 -0.05518906 0.6045247 0.7946723 5.903862 0 0 0 1</matrix>
+        <instance_light url="#Lamp-light"/>
+      </node>
+      <node id="PM3D_CHESS_SET_3_heavy" name="PM3D_CHESS_SET_3_heavy" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#PM3D_CHESS_SET_3_heavy-mesh" name="PM3D_CHESS_SET_3_heavy"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

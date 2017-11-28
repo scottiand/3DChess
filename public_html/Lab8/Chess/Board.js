@@ -103,11 +103,12 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
                 valid = true;
             }
         }
-
+        //console.log("After initial validity test: " + valid);
         if (valid) {
             var enemyTeam = isWhite ? this.blackTeam : this.whiteTeam;
             var friendKing = isWhite ? this.whiteKing : this.blackKing;
             var testBoard = this.copy();
+            var enemyIndex = enemyTeam.indexOf(testBoard.get(let2,num2));
             piece.letter = let2;
             piece.number = num2;
             testBoard.set(piece);
@@ -116,17 +117,19 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             //testBoard.print();
             var kingLoc = piece === friendKing ? vec2(let2, num2) : vec2(friendKing.letter, friendKing.number);
             for (var i = 0; i < enemyTeam.length; i++) {
-                var moves = enemyTeam[i].canMove(testBoard);
-                for (var j = 0; j < moves.length; j++) {
-                    if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
-                        valid = false;
+                if (j != enemyIndex) {
+                    var moves = enemyTeam[i].canMove(testBoard);
+                    for (var j = 0; j < moves.length; j++) {
+                        if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
+                            valid = false;
+                        }
                     }
                 }
             }//Test if this move puts the king in check
             piece.letter = let1;
             piece.number = num1;
         }// Test if the king is in check
-
+        //console.log("After check-based validity test: " + valid);
         if (valid) { // If the player's move is valid
             if (isEnemy(this, let2, num2, isWhite)) {
                 var enemy = this.get(let2, num2);
@@ -178,14 +181,16 @@ Board.prototype.copy = function () {
 };
 
 Board.prototype.drawBoard = function () {
+    stack.multiply(translate(8,0,-8));
     stack.push();
+
     stack.multiply(scalem(1,0.25,1));
 
     for(var i = 0; i < this.boardColorMat.length; i++){
         for(var j = 0; j < this.boardColorMat.length; j++){
 
             stack.push();
-            stack.multiply(translate(i*2,0,j*2));
+            stack.multiply(translate(-i*2,0,j*2));
             gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
             gl.uniform4fv(uColor,(this.boardColorMat[i][j]));
             Shapes.drawPrimitive(Shapes.cube); // cube
@@ -194,5 +199,46 @@ Board.prototype.drawBoard = function () {
         }
     }
 
-  stack.pop();
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(0,0.2,0,1));
+
+    for(var i = 0; i < this.boardColorMat.length; i++){
+        for(var j = 0; j < this.boardColorMat.length; j++) {
+
+
+            var piece = this.get(i,j);
+            if (piece != 0) {
+                stack.push();
+                stack.multiply(translate(-i*2,0,j*2));
+                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                if (piece.isWhite) {
+                    gl.uniform4fv(uColor,(vec4(1,1,1,1)));
+                } else {
+                    gl.uniform4fv(uColor,vec4(0.3,0.3,0.3,1));
+                }
+
+                this.get(i,j).model.draw(); // cube
+                stack.pop();
+            }
+
+        }
+    }
+    stack.pop();
+
+
+    //Clicking for the game
+    // setMouseEventHandler();
+    //
+    // function initWindowListeners(){
+    //     document.getElementById().addEventListener("input", function (e) {
+    //         chessMove; //figure out how we'll get the chess move, we'll want to grab the piece
+    //     })
+    // }
+
+
+
 };
+
+
