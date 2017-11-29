@@ -112,8 +112,7 @@ function shaderSetup() {
     uColorMode = gl.getUniformLocation(program, "uColorMode"); // Color Mode
 }
 
-function render()
-{
+function render() {
     //var t = new Board();
     
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -154,32 +153,14 @@ function render()
     board.drawBoard();//chessboard
     stack.pop();
 
-    // if (phong && phong.isReady ()) {
-    //     phong.use (); // Tell GL to use the 'phong' program now.
-    //     phong.setProjection (camera.calcProjectionMat ()); // Send projection matrix to the GPU program "phong".
-    //
-    //     // Set up lighting:
-    //     //phong.setGlobalAmbientIntensity (vec4 (.2, .2, .2, 1)); // Scene-wide ambient light intensity, by RGB (can tweak red separately, for example).
-    //
-    //     // Light angle/position stuff:
-    //     //var angle = parseFloat (document.getElementById ("lightSlider").value) * Math.PI * 2 / 360; // Light 0's angle.
-    //    // var lightPosition = vec4 (24 * Math.cos (angle), 10, 24 * Math.sin (angle), 1); // Calculate a vec4 position for the light.
-    //    // var lightPositionPrime = mult (viewMat, lightPosition); // Transform light into camera coordinates (required by "phong" program).
-    //
-    //     //phong.setLightCount (1); // Send light source count (max. is 16, but you can change it in the shader) to the GPU program.
-    //
-    //     // Send light 0's parameters to the shader (the first argument of each of these tells "phong" to change light 0):
-    //   //  phong.setLightPosition (0, lightPositionPrime); // Send light 0's position.
-    //     //phong.setLightDiffuse (0, lightColor); // Send light 0's diffuse intensity, by RGB (so you can tweak each channel, R, G, and B, separately if you want).
-    //     //phong.setLightSpecular (0, vec3 (.25, .25, .25)); // Send light 0's specular intensity, by RGB.
-    //
-    //     // Transformations:
-    //     var mat = mult (viewMat, rotateX (90), scalem (1, 1, 1)); // Make a modelview matrix.
-    //     phong.setModelView (mat); // Send it to the GPU program.
-    //
-    //     Shapes.pawn.drawInProgram (phong); // Draw the model in the "phong" program!
-    //
-    //
-    // }
+    //gl.uniform1f(uColorMode,1);
+    //gl.uniform4fv(uColor, vec4(0, 0, 0, 1));
+    if (Shapes.pawn.ready) {
+        for (var i in Shapes.pawn.geometries) {
+            for (var j = 0; j < Shapes.pawn.geometries[i].length; j++) {
+                Shapes.drawPrimitive(Shapes.pawn.geometries[i][j]);
+            }
+        }
+    }
 }
 

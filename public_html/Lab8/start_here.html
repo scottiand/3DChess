@@ -21,12 +21,12 @@
             varying  vec3 fN;
             varying  vec3 fE;
             varying  vec3 fL;
-            varying vec4 color;
+            //varying vec4 color;
             varying vec2 texCoord;
 
             void main()
             {
-            color = vColor;
+            //color = vColor;
             texCoord = vTexCoords;
             fN = normalize( uModel_view*vNormal ).xyz;
             fE = -(uModel_view*vPosition).xyz;
@@ -46,7 +46,7 @@
             varying vec3 fL;
             varying vec3 fE;
             varying vec2 texCoord;
-            varying vec4 color;
+            //varying vec4 color;
 
             // incoming uniform values
             uniform float uColorMode;
@@ -60,7 +60,7 @@
             {
             vec4 myColor;
             if (uColorMode == 0.0) {
-                myColor = color;
+            //    myColor = color;
             } else if (uColorMode == 1.0) {
                 myColor = uColor;
             } else if (uColorMode == 2.0) {
