@@ -131,7 +131,7 @@ function render() {
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
 
-    board.drawBoard();//chessboard
+    board.draw();//chessboard
 
     if (Shapes.pawn.ready) {
         for (var i in Shapes.pawn.geometries) {

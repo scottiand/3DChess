@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7200e8a-4b8e-4767-a43f-c1e1cd753aa3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/Chess/ChessUtilities.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Chess/ChessUtilities.js" />
       <change beforePath="$PROJECT_DIR$/public_html/Lab8/render_scene.js" afterPath="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,18 +20,18 @@
       <file leaf-file-name="start_here.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
+            <state relative-caret-position="-1313">
               <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="render_scene.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="render_scene.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="131" column="28" lean-forward="false" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+            <state relative-caret-position="222">
+              <caret line="133" column="14" lean-forward="false" selection-start-line="133" selection-start-column="14" selection-end-line="133" selection-end-column="14" />
               <folding>
                 <element signature="n#!!block;n#initTextures#0" expanded="false" />
                 <element signature="n#!!block;n#shaderSetup#0" expanded="false" />
@@ -42,20 +40,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="182" column="35" lean-forward="false" selection-start-line="182" selection-start-column="35" selection-end-line="182" selection-end-column="35" />
+            <state relative-caret-position="335">
+              <caret line="209" column="2" lean-forward="true" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#2062#2447#0" expanded="false" />
                 <element signature="e#2493#3017#0" expanded="false" />
                 <element signature="e#3090#6493#0" expanded="false" />
                 <element signature="e#6531#6811#0" expanded="false" />
-                <element signature="e#6849#7005#0" expanded="false" />
-                <element signature="e#7048#7552#0" expanded="false" />
                 <element signature="e#7596#8328#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Camera.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/Lab8/Camera.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1808">
+              <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#5075#6693#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -179,9 +188,10 @@
         <option value="$PROJECT_DIR$/public_html/Lab8/start_here.html" />
         <option value="$PROJECT_DIR$/public_html/Lab8/geometry/Shapes.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/DaeModel.js" />
-        <option value="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/ChessUtilities.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
+        <option value="$PROJECT_DIR$/public_html/Lab8/Camera.js" />
+        <option value="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
       </list>
     </option>
   </component>
@@ -299,12 +309,12 @@
       <updated>1511828956541</updated>
       <workItem from="1511828958894" duration="709000" />
       <workItem from="1511832414937" duration="10895000" />
-      <workItem from="1511995104084" duration="1941000" />
+      <workItem from="1511995104084" duration="2394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13545000" />
+    <option name="totallyTimeSpent" value="13998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="53" width="1222" height="738" extended-state="0" />
@@ -371,8 +381,6 @@
             <element signature="e#2493#3017#0" expanded="false" />
             <element signature="e#3090#6493#0" expanded="false" />
             <element signature="e#6531#6811#0" expanded="false" />
-            <element signature="e#6849#7005#0" expanded="false" />
-            <element signature="e#7048#7552#0" expanded="false" />
             <element signature="e#7596#8328#0" expanded="false" />
           </folding>
         </state>
@@ -500,14 +508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/Lab8/DaeModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -570,30 +570,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Camera.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="131" column="28" lean-forward="false" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+        <state relative-caret-position="1808">
+          <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
           <folding>
-            <element signature="n#!!block;n#initTextures#0" expanded="false" />
-            <element signature="n#!!block;n#shaderSetup#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#5075#6693#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="182" column="35" lean-forward="false" selection-start-line="182" selection-start-column="35" selection-end-line="182" selection-end-column="35" />
+        <state relative-caret-position="335">
+          <caret line="209" column="2" lean-forward="true" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#2062#2447#0" expanded="false" />
             <element signature="e#2493#3017#0" expanded="false" />
             <element signature="e#3090#6493#0" expanded="false" />
             <element signature="e#6531#6811#0" expanded="false" />
-            <element signature="e#6849#7005#0" expanded="false" />
-            <element signature="e#7048#7552#0" expanded="false" />
             <element signature="e#7596#8328#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1313">
+          <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="133" column="14" lean-forward="false" selection-start-line="133" selection-start-column="14" selection-end-line="133" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!block;n#initTextures#0" expanded="false" />
+            <element signature="n#!!block;n#shaderSetup#0" expanded="false" />
           </folding>
         </state>
       </provider>
