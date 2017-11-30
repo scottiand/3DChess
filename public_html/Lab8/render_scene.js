@@ -128,17 +128,21 @@ function render() {
     //transform the light's position into CCS from WCS, then set the uniform lighting variable. 
     gl.uniform4fv(uLight_position, mult(viewMat, lighting.light_position));
 
+    //if (Shapes.pawn.ready) { // Works! just not in the right place yet.
+    //    for (var i in Shapes.pawn.geometries) {
+    //        for (var j = 0; j < Shapes.pawn.geometries[i].length; j++) {
+    //            gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    //            gl.uniform4fv(uColor,whitePiece);
+    //            Shapes.drawPrimitive(Shapes.pawn.geometries[i][j]);
+    //        }
+    //    }
+    //}
+
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
 
     board.draw();//chessboard
 
-    if (Shapes.pawn.ready) {
-        for (var i in Shapes.pawn.geometries) {
-            for (var j = 0; j < Shapes.pawn.geometries[i].length; j++) {
-                Shapes.drawPrimitive(Shapes.pawn.geometries[i][j]);
-            }
-        }
-    }
+
 }
 

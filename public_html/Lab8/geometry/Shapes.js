@@ -40,7 +40,7 @@ Shapes.initShapes = function () {
         }
         dae.ready = true; // Set ready flag, so we know we can draw this now.
         render (); // Redraw.
-    },null,true);
+    },null,true,true);
    // Shapes.pawn.setDefaultMaterial(defaultMaterial);
 //    Shapes.axis.initBuffer();
 };

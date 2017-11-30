@@ -22,7 +22,7 @@ function DaeModel () {
     this.modelURL = ""; // The URL from which this DAE was loaded. Useful for later determining where to get relative-path images from.
 }
 
-DaeModel.prototype.grab = function (dae_url, onloadcallback, onimagesloaded, opt_useJsArrays) {
+DaeModel.prototype.grab = function (dae_url, onloadcallback, onimagesloaded, opt_useJsArrays, opt_useVec4normals) {
     var me = this;
     var http = typeof (XMLHttpRequest) != "undefined" ? new XMLHttpRequest () : new ActiveXObject ("Microsoft.XMLHTTP");
     http.overrideMimeType('application/xml');
@@ -39,7 +39,7 @@ DaeModel.prototype.grab = function (dae_url, onloadcallback, onimagesloaded, opt
             me.loadImages (xdoc, xdoc.getElementsByTagName ("library_images"), onimagesloaded);
             me.loadEffects (xdoc, xdoc.getElementsByTagName ("library_effects"));
             me.loadMaterials (xdoc, xdoc.getElementsByTagName ("library_materials"));
-            me.loadGeometries (xdoc, xdoc.getElementsByTagName ("library_geometries"), opt_useJsArrays);
+            me.loadGeometries (xdoc, xdoc.getElementsByTagName ("library_geometries"), opt_useJsArrays, opt_useVec4normals);
             me.loadControllers (xdoc, xdoc.getElementsByTagName ("library_controllers"));
             me.loadVisualScenes (xdoc, xdoc.getElementsByTagName ("library_visual_scenes"));
             me.initBoneArray (); // Creates mappings for which matrix goes to which bone.
@@ -575,7 +575,7 @@ DaeModel.prototype.loadMaterials = function (xDoc, xMaterialLibraries) {
         }
     }
 };
-DaeModel.prototype.loadGeometries = function (xDoc, xGeometryLibraries, opt_useJsArrays) {
+DaeModel.prototype.loadGeometries = function (xDoc, xGeometryLibraries, opt_useJsArrays, opt_useVec4normals) {
     for (var i = 0; i < xGeometryLibraries.length; i++) {
         var library = xGeometryLibraries[i];
         for (var j = 0; j < library.childNodes.length; j++) {
@@ -686,6 +686,7 @@ DaeModel.prototype.loadGeometries = function (xDoc, xGeometryLibraries, opt_useJ
                                     var nData = inputData.normal ? inputData.normal.source.getAttribute (nIndex, ["x", "y", "z"], 1, opt_useJsArrays) : null;
                                     var tData = inputData.texCoord ? inputData.texCoord.source.getAttribute (tIndex, ["s", "t"], 1, opt_useJsArrays) : null;
                                     // Add the data to our primitive's buffer:
+                                    if (opt_useVec4normals) nData.push (0);
                                     primitive.vertices.push (vData);
                                     if (nData)
                                         primitive.normals.push (nData);
