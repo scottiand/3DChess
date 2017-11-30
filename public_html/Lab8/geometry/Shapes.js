@@ -23,14 +23,27 @@ Shapes.disk = new Disk(60);
 Shapes.cone = new Cone(60);
 Shapes.train = new Train();
 Shapes.pawn = new DaeModel();
-
+Shapes.rook = new DaeModel();
+Shapes.bishop = new DaeModel();
+Shapes.knight = new DaeModel();
+Shapes.queen = new DaeModel();
+Shapes.king = new DaeModel();
 
 Shapes.initShapes = function () {
     Shapes.initBuffers(Shapes.cube);
     Shapes.initBuffers(Shapes.cylinder);
     Shapes.initBuffers(Shapes.disk);
     Shapes.initBuffers(Shapes.cone);
-    Shapes.pawn.grab("Models/CenteredPawn.dae", function (dae) {
+    Shapes.grab(Shapes.pawn,"Models/CenteredPawn.dae");
+    Shapes.grab(Shapes.bishop,"Models/CenteredBishop.dae");
+    Shapes.grab(Shapes.rook,"Models/CenteredRook.dae");
+    Shapes.grab(Shapes.knight,"Models/Knight.dae");
+    Shapes.grab(Shapes.queen,"Models/Queen.dae");
+    Shapes.grab(Shapes.king,"Models/CenteredKing.dae");
+};
+
+Shapes.grab = function (shape, filename) {
+    shape.grab(filename, function (dae) {
 
         for (var i in dae.geometries) {
             for (var j = 0; j < dae.geometries[i].length; j++) {
@@ -41,10 +54,7 @@ Shapes.initShapes = function () {
         dae.ready = true; // Set ready flag, so we know we can draw this now.
         render (); // Redraw.
     },null,true,true);
-   // Shapes.pawn.setDefaultMaterial(defaultMaterial);
-//    Shapes.axis.initBuffer();
 };
-
 
 Shapes.initBuffers = function (primitive) {
 

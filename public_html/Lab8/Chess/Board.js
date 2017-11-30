@@ -226,7 +226,7 @@ Board.prototype.drawPieces = function () {
                     gl.uniform4fv(uColor,blackPiece);
                 }
 
-                this.get(i,j).model.draw(); // cube
+                this.get(i,j).model.draw(piece.isWhite); // cube
                 stack.pop();
             }
 
