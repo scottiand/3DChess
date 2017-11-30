@@ -101,23 +101,23 @@ Camera.prototype.motion = function () {
             mouseState.starty = mouseState.y;
             break;
         case mouseState.actionChoice.TRACK:  // PAN   - right mouse button
-            var dx = -0.05 * mouseState.delx; // amount to pan along x
-            var dy = 0.05 * mouseState.dely;  // amount to pan along y
+            // var dx = -0.05 * mouseState.delx; // amount to pan along x
+            // var dy = 0.05 * mouseState.dely;  // amount to pan along y
             ////scale the change in x by the u-vector to orient change in the camera's current x-axis, 
             //and scale the change in y by the v-vector to orient change in the camera's current y-axis, 
             //then add both changes together and add the resulting vector to the current eye position. 
-            this.eye = add(this.eye, add(scale(dx, this.viewRotation[0]), scale(dy, this.viewRotation[1])));
-            mouseState.startx = mouseState.x;
-            mouseState.starty = mouseState.y;
+            // this.eye = add(this.eye, add(scale(dx, this.viewRotation[0]), scale(dy, this.viewRotation[1])));
+            // mouseState.startx = mouseState.x;
+            // mouseState.starty = mouseState.y;
             break;
         case mouseState.actionChoice.DOLLY:   // middle mouse button
-            var dx = 0.05 * mouseState.delx;  // amount to move backward/forward
-            var dy = 0.05 * mouseState.dely;
+            // var dx = 0.05 * mouseState.delx;  // amount to move backward/forward
+            // var dy = 0.05 * mouseState.dely;
             ////scale the change in X & Y by the n-vector to orient the change in the camera's current z, 
             //then add the result to the current eye position. 
-            this.eye = add(this.eye, scale((-dx + -dy), this.viewRotation[2])); //negate dx and dy for more natural movement
-            mouseState.startx = mouseState.x;
-            mouseState.starty = mouseState.y;
+            // this.eye = add(this.eye, scale((-dx + -dy), this.viewRotation[2])); //negate dx and dy for more natural movement
+            // mouseState.startx = mouseState.x;
+            // mouseState.starty = mouseState.y;
             break;
         default:
             console.log("unknown action: " + mouseState.action);
@@ -166,38 +166,38 @@ Camera.prototype.tumble = function (rx, ry) {
 Camera.prototype.keyAction = function (key) {
     var alpha = 1.0;  // used to control the amount of a turn during the flythrough
     switch (key) {     // different keys should be used because these do things in browser
-        case 'E':  // turn right 
-            console.log("turn right");
-            this.viewRotation = mult(rotateY(-alpha), this.viewRotation);
-            break;
-        case 'W':   // turn left
-            console.log("turn left");
-            this.viewRotation = mult(rotateY(alpha), this.viewRotation);
-            break;
-        case 'S':  // turn up   
-            console.log(" turn up");
-            this.viewRotation = mult(rotateX(alpha), this.viewRotation);
-            break;
-        case 'D':  // turn down
-            console.log("turn down");
-            this.viewRotation = mult(rotateX(-alpha), this.viewRotation);
-            break;
-        case 'X':  // bank right 
-            console.log("bank right");
-            this.viewRotation = mult(rotateZ(-alpha), this.viewRotation);
-            break;
-        case 'C':  // bank left
-            console.log("bank left");
-            this.viewRotation = mult(rotateZ(alpha), this.viewRotation);
-            break;
-        case 'Q':  // move forward
-            console.log("move forward");
-            this.eye = subtract(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.
-            break;
-        case 'A':  //  move backward
-            console.log("move backward");
-            this.eye = add(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.
-            break;
+        // case 'E':  // turn right
+        //     console.log("turn right");
+        //     this.viewRotation = mult(rotateY(-alpha), this.viewRotation);
+        //     break;
+        // case 'W':   // turn left
+        //     console.log("turn left");
+        //     this.viewRotation = mult(rotateY(alpha), this.viewRotation);
+        //     break;
+        // case 'S':  // turn up
+        //     console.log(" turn up");
+        //     this.viewRotation = mult(rotateX(alpha), this.viewRotation);
+        //     break;
+        // case 'D':  // turn down
+        //     console.log("turn down");
+        //     this.viewRotation = mult(rotateX(-alpha), this.viewRotation);
+        //     break;
+        // case 'X':  // bank right
+        //     console.log("bank right");
+        //     this.viewRotation = mult(rotateZ(-alpha), this.viewRotation);
+        //     break;
+        // case 'C':  // bank left
+        //     console.log("bank left");
+        //     this.viewRotation = mult(rotateZ(alpha), this.viewRotation);
+        //     break;
+        // case 'Q':  // move forward
+        //     console.log("move forward");
+        //     this.eye = subtract(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.
+        //     break;
+        // case 'A':  //  move backward
+        //     console.log("move backward");
+        //     this.eye = add(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.
+        //     break;
         case 'R':  //  reset
             console.log("reset");
             this.reset();

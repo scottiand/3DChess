@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7200e8a-4b8e-4767-a43f-c1e1cd753aa3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/geometry/PieceShapes.js" afterPath="$PROJECT_DIR$/public_html/Lab8/geometry/PieceShapes.js" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/geometry/Shapes.js" afterPath="$PROJECT_DIR$/public_html/Lab8/geometry/Shapes.js" />
+      <change beforePath="$PROJECT_DIR$/public_html/Lab8/Camera.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Camera.js" />
+      <change beforePath="$PROJECT_DIR$/public_html/Lab8/start_here.html" afterPath="$PROJECT_DIR$/public_html/Lab8/start_here.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="start_here.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="start_here.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1313">
-              <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+            <state relative-caret-position="213">
+              <caret line="143" column="66" lean-forward="false" selection-start-line="143" selection-start-column="66" selection-end-line="143" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -62,11 +61,18 @@
       <file leaf-file-name="Camera.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/Camera.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1808">
-              <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
+            <state relative-caret-position="127">
+              <caret line="87" column="38" lean-forward="false" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#5075#6693#0" expanded="false" />
+                <element signature="n#!!block;n#Camera#0" expanded="false" />
+                <element signature="e#1069#1129#0" expanded="false" />
+                <element signature="e#1276#1627#0" expanded="false" />
+                <element signature="e#1793#2199#0" expanded="false" />
+                <element signature="e#2380#2491#0" expanded="false" />
+                <element signature="e#2648#4751#0" expanded="false" />
+                <element signature="e#5105#6723#0" expanded="false" />
+                <element signature="e#6770#8539#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -144,7 +150,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PieceShapes.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PieceShapes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/geometry/PieceShapes.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -188,14 +194,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js" />
-        <option value="$PROJECT_DIR$/public_html/Lab8/start_here.html" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/ChessUtilities.js" />
-        <option value="$PROJECT_DIR$/public_html/Lab8/Camera.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/DaeModel.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/geometry/Shapes.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/geometry/PieceShapes.js" />
+        <option value="$PROJECT_DIR$/public_html/Lab8/Camera.js" />
+        <option value="$PROJECT_DIR$/public_html/Lab8/start_here.html" />
       </list>
     </option>
   </component>
@@ -313,12 +319,12 @@
       <updated>1511828956541</updated>
       <workItem from="1511828958894" duration="709000" />
       <workItem from="1511832414937" duration="10895000" />
-      <workItem from="1511995104084" duration="4732000" />
+      <workItem from="1511995104084" duration="5316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16336000" />
+    <option name="totallyTimeSpent" value="16920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="22" width="1222" height="738" extended-state="0" />
@@ -504,17 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Camera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1808">
-          <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#5075#6693#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/Lab8/DaeModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -533,14 +528,6 @@
             <element signature="n#!!block;n#initTextures#0" expanded="false" />
             <element signature="n#!!block;n#shaderSetup#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1313">
-          <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -622,6 +609,32 @@
             <element signature="n#!!block;n#QueenModel#0" expanded="false" />
             <element signature="e#3148#3593#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Camera.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="87" column="38" lean-forward="false" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!block;n#Camera#0" expanded="false" />
+            <element signature="e#1069#1129#0" expanded="false" />
+            <element signature="e#1276#1627#0" expanded="false" />
+            <element signature="e#1793#2199#0" expanded="false" />
+            <element signature="e#2380#2491#0" expanded="false" />
+            <element signature="e#2648#4751#0" expanded="false" />
+            <element signature="e#5105#6723#0" expanded="false" />
+            <element signature="e#6770#8539#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="143" column="66" lean-forward="false" selection-start-line="143" selection-start-column="66" selection-end-line="143" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
