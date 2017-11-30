@@ -2,6 +2,10 @@
  * Scotti Anderson and Carlos Luevanos
  * Functions to assist with chess-related activities
  */
+var whiteSpace = vec4(0.95,0.95,0.96,1);// Color of spaces on board
+var blackSpace = vec4(0.1,0.4,0.02,1);
+var whitePiece = vec4(1,0.95,0.8,1); // Color of Pieces
+var blackPiece = vec4(0.3,0.3,0.35,1);
 
 function boardMatrix() {
     this.grid = [];
@@ -13,9 +17,6 @@ function boardMatrix() {
     }
 }
 
-
-
-
 function boardColorMatrix() {
     this.grid = [];
     for (var i = 0; i < 8; i++) {
@@ -23,15 +24,15 @@ function boardColorMatrix() {
        for (var j = 0; j < 8; j++) {
            if (i % 2 === 0) {
                if (j % 2 === 0){
-                   this.grid[i][j] = vec4(0,0,0,1);
+                   this.grid[i][j] = blackSpace;
                } else {
-                   this.grid[i][j] = vec4(1,1,1,1);
+                   this.grid[i][j] = whiteSpace;
                }
            } else {
                if (!(j % 2 === 0)){
-                   this.grid[i][j] = vec4(0,0,0,1);
+                   this.grid[i][j] = blackSpace;
                }  else {
-                   this.grid[i][j] = vec4(1,1,1,1);
+                   this.grid[i][j] = whiteSpace;
                }
            }
 

@@ -180,12 +180,20 @@ Board.prototype.copy = function () {
     return newBoard;
 };
 
-Board.prototype.drawBoard = function () {
-    stack.multiply(translate(8,0,-8));
+Board.prototype.draw = function () {
+    gl.uniform1f(uColorMode,1);
     stack.push();
+    stack.multiply(translate(8,0,-8));
 
+    this.drawBoard();
+    this.drawPieces();
+
+    stack.pop();
+};
+
+Board.prototype.drawBoard = function () {
+    stack.push();
     stack.multiply(scalem(1,0.25,1));
-
     for(var i = 0; i < this.boardColorMat.length; i++){
         for(var j = 0; j < this.boardColorMat.length; j++){
 
@@ -198,25 +206,24 @@ Board.prototype.drawBoard = function () {
 
         }
     }
-
     stack.pop();
+};
 
+Board.prototype.drawPieces = function () {
     stack.push();
     stack.multiply(translate(0,0.2,0,1));
 
     for(var i = 0; i < this.boardColorMat.length; i++){
         for(var j = 0; j < this.boardColorMat.length; j++) {
-
-
             var piece = this.get(i,j);
             if (piece != 0) {
                 stack.push();
                 stack.multiply(translate(-i*2,0,j*2));
                 gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
                 if (piece.isWhite) {
-                    gl.uniform4fv(uColor,(vec4(1,1,1,1)));
+                    gl.uniform4fv(uColor,whitePiece);
                 } else {
-                    gl.uniform4fv(uColor,vec4(0.3,0.3,0.3,1));
+                    gl.uniform4fv(uColor,blackPiece);
                 }
 
                 this.get(i,j).model.draw(); // cube
@@ -226,19 +233,6 @@ Board.prototype.drawBoard = function () {
         }
     }
     stack.pop();
-
-
-    //Clicking for the game
-    // setMouseEventHandler();
-    //
-    // function initWindowListeners(){
-    //     document.getElementById().addEventListener("input", function (e) {
-    //         chessMove; //figure out how we'll get the chess move, we'll want to grab the piece
-    //     })
-    // }
-
-
-
-};
+}
 
 

@@ -123,38 +123,16 @@ function render() {
     var viewMat = camera.calcViewMat();   // View matrix
 
     stack.clear();
-    stack.multiply(viewMat); 
-    
-//    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
-//    Shapes.axis.draw();
+    stack.multiply(viewMat);
 
     //transform the light's position into CCS from WCS, then set the uniform lighting variable. 
     gl.uniform4fv(uLight_position, mult(viewMat, lighting.light_position));
 
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
-    
-    stack.push();
 
-    //draw LightCube
-    stack.push();
-    stack.multiply(translate(lighting.light_position[0], lighting.light_position[1], lighting.light_position[2]));
-    stack.multiply(scalem(0.1, 0.1, 0.1));
-    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
-    gl.uniform4fv(uColor, vec4(0, 0, 0, 1));  // set color to black
-    Shapes.drawPrimitive(Shapes.cube);
-
-    stack.pop();
-
-
-        //Chessboard stuff
-    stack.push();
-    gl.uniform1f(uColorMode,1);
     board.drawBoard();//chessboard
-    stack.pop();
 
-    //gl.uniform1f(uColorMode,1);
-    //gl.uniform4fv(uColor, vec4(0, 0, 0, 1));
     if (Shapes.pawn.ready) {
         for (var i in Shapes.pawn.geometries) {
             for (var j = 0; j < Shapes.pawn.geometries[i].length; j++) {
