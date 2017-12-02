@@ -87,32 +87,45 @@ Shapes.initBuffers = function (primitive) {
     //gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.texCoords), gl.STATIC_DRAW);
     //gl.bindBuffer(gl.ARRAY_BUFFER, null); // done with this buffer
 
+
+
 };
 
 Shapes.drawPrimitive = function (primitive) {
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, primitive.vertexBuffer);
-    gl.enableVertexAttribArray(vPosition);
-    gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
+    if(shaderCheck){
+        gl.bindBuffer(gl.ARRAY_BUFFER, primitive.vertexBuffer);
+        gl.enableVertexAttribArray(vPosition);
+        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
 
-    //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.colorBuffer);
-    //gl.enableVertexAttribArray(vColor);
-    //gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
+        //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.colorBuffer);
+        //gl.enableVertexAttribArray(vColor);
+        //gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, primitive.normalBuffer);
-    gl.enableVertexAttribArray(vNormal);
-    gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
-    
-    //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
-    //gl.enableVertexAttribArray(vTexCoords);
-    //gl.vertexAttribPointer(vTexCoords, 2, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, primitive.normalBuffer);
+        gl.enableVertexAttribArray(vNormal);
+        gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
 
-    gl.drawArrays(gl.TRIANGLES, 0, primitive.numVertices);
+        //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
+        //gl.enableVertexAttribArray(vTexCoords);
+        //gl.vertexAttribPointer(vTexCoords, 2, gl.FLOAT, false, 0, 0);
 
-    gl.disableVertexAttribArray(vPosition);
-    //gl.disableVertexAttribArray(vColor);
-    gl.disableVertexAttribArray(vNormal);
-    //gl.disableVertexAttribArray(vTexCoords);
+        gl.drawArrays(gl.TRIANGLES, 0, primitive.numVertices);
+
+        gl.disableVertexAttribArray(vPosition);
+        //gl.disableVertexAttribArray(vColor);
+        gl.disableVertexAttribArray(vNormal);
+        //gl.disableVertexAttribArray(vTexCoords);
+    } else{
+        gl.bindBuffer(gl.ARRAY_BUFFER, primitive.vertexBuffer);
+        gl.enableVertexAttribArray(vColorPos);
+        gl.vertexAttribPointer(vColorPos, 4, gl.FLOAT, false, 0, 0);
+        gl.drawArrays(gl.TRIANGLES, 0, primitive.numVertices);
+        gl.disableVertexAttribArray(vColorPos);
+
+
+    }
+
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
 };
 

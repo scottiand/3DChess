@@ -13,7 +13,8 @@ function Camera() {
     this.zFar = 500;         // camera's near plane
 
 // Camera *initial* location and orientation parameters
-    this.eye_start = vec4([0, 4, 25, 1]); // initial camera location (needed for reseting)   
+    this.eye_start = vec4([0, 4, 25, 1]); // initial camera location (needed for reseting)
+    //this.eye_start = vec4([0, 22.373147843792395, 11.849028599265363, 1]);
     this.VPN = vec4([0, 0, 1, 0]);  // used to initialize uvn
     this.VUP = vec4([0, 1, 0, 0]);  // used to initialize uvn  
 
@@ -111,13 +112,13 @@ Camera.prototype.motion = function () {
             // mouseState.starty = mouseState.y;
             break;
         case mouseState.actionChoice.DOLLY:   // middle mouse button
-            // var dx = 0.05 * mouseState.delx;  // amount to move backward/forward
-            // var dy = 0.05 * mouseState.dely;
+             var dx = 0.05 * mouseState.delx;  // amount to move backward/forward
+             var dy = 0.05 * mouseState.dely;
             ////scale the change in X & Y by the n-vector to orient the change in the camera's current z, 
             //then add the result to the current eye position. 
-            // this.eye = add(this.eye, scale((-dx + -dy), this.viewRotation[2])); //negate dx and dy for more natural movement
-            // mouseState.startx = mouseState.x;
-            // mouseState.starty = mouseState.y;
+             this.eye = add(this.eye, scale((-dx + -dy), this.viewRotation[2])); //negate dx and dy for more natural movement
+             mouseState.startx = mouseState.x;
+             mouseState.starty = mouseState.y;
             break;
         default:
             console.log("unknown action: " + mouseState.action);
@@ -164,7 +165,7 @@ Camera.prototype.tumble = function (rx, ry) {
 };
 
 Camera.prototype.keyAction = function (key) {
-    var alpha = 1.0;  // used to control the amount of a turn during the flythrough
+    var alpha = 180.0;  // used to control the amount of a turn during the flythrough
     switch (key) {     // different keys should be used because these do things in browser
         // case 'E':  // turn right
         //     console.log("turn right");
@@ -189,7 +190,7 @@ Camera.prototype.keyAction = function (key) {
         // case 'C':  // bank left
         //     console.log("bank left");
         //     this.viewRotation = mult(rotateZ(alpha), this.viewRotation);
-        //     break;
+           // break;
         // case 'Q':  // move forward
         //     console.log("move forward");
         //     this.eye = subtract(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.

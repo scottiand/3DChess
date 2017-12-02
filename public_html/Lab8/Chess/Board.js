@@ -7,8 +7,10 @@ function Board() {
     this.grid = new boardMatrix();
     this.boardColorMat = new boardColorMatrix();
     this.whiteTurn = true;
+    this.selected = null;
     this.whiteTaken = [];
     this.blackTaken = [];
+    this.lightUp = []; //potential moves for pieces on the board
 
     this.whiteTeam = [];
     this.blackTeam = [];
@@ -84,12 +86,20 @@ Board.prototype.print = function () {
 Board.prototype.keyAction = function (key) {
     if (key === 13) { // When return is hit
         var entry = document.getElementById("textEntry").value; // Get the string fromt he entry
-        var strings = entry.split(" ", 2);// Tokenize
-        var let1 = letterToNumber(strings[0].charAt(0)); // Extract values
-        var num1 = parseInt(strings[0].charAt(1)) - 1;
-        var let2 = letterToNumber(strings[1].charAt(0));
-        var num2 = parseInt(strings[1].charAt(1)) - 1;
-        this.makeMove(this.whiteTurn, let1, num1, let2, num2); // Take a turn
+        var strings = entry.split(" ", 1);// Tokenize
+        var letter = letterToNumber(strings[0].charAt(0)); // Extract values
+        var number = parseInt(strings[0].charAt(1)) - 1;
+        //var letter = letterToNumber(strings[1].charAt(0));
+        //var num = parseInt(strings[1].charAt(1)) - 1;
+
+        if(this.selected === null){
+            //select piece
+            this.selectedPiece(letter,number);
+        } else {
+            //do what it did before
+            this.makeMove(this.whiteTurn, this.selected.letter, this.selected.number, letter, number); // Take a turn
+
+        }
     }
 };
 
@@ -113,11 +123,10 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             piece.number = num2;
             testBoard.set(piece);
             testBoard.remove(let1, num1);
-            //console.log("testBoard:");
-            //testBoard.print();
+
             var kingLoc = piece === friendKing ? vec2(let2, num2) : vec2(friendKing.letter, friendKing.number);
             for (var i = 0; i < enemyTeam.length; i++) {
-                if (j != enemyIndex) {
+                if (i != enemyIndex) {
                     var moves = enemyTeam[i].canMove(testBoard);
                     for (var j = 0; j < moves.length; j++) {
                         if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
@@ -159,6 +168,8 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             this.remove(let1, num1); // remove the original
             this.print();
             this.whiteTurn = !this.whiteTurn;
+            this.selected = null;
+            this.lightUp = [];
         } else {
             console.log("Invalid Move! Cannot move there!");
         }
@@ -181,7 +192,7 @@ Board.prototype.copy = function () {
 };
 
 Board.prototype.draw = function () {
-    gl.uniform1f(uColorMode,1);
+
     stack.push();
     stack.multiply(translate(8,0,-8));
 
@@ -192,15 +203,22 @@ Board.prototype.draw = function () {
 };
 
 Board.prototype.drawBoard = function () {
+
     stack.push();
     stack.multiply(scalem(1,0.25,1));
     for(var i = 0; i < this.boardColorMat.length; i++){
         for(var j = 0; j < this.boardColorMat.length; j++){
-
             stack.push();
             stack.multiply(translate(-i*2,0,j*2));
             gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
             gl.uniform4fv(uColor,(this.boardColorMat[i][j]));
+
+            for(var k = 0; k < this.lightUp.length; k++){
+                if(this.lightUp[k][0] === i && this.lightUp[k][1] === j) {
+                    gl.uniform4fv(uColor, vec4(1, 0, 0, 1));
+                }
+            }
+
             Shapes.drawPrimitive(Shapes.cube); // cube
             stack.pop();
 
@@ -233,6 +251,87 @@ Board.prototype.drawPieces = function () {
         }
     }
     stack.pop();
-}
+};
 
+Board.prototype.drawColor = function () {
+    stack.multiply(translate(8,0,-8));
+
+    stack.push();
+    stack.multiply(scalem(1,0.25,1));
+    for(var i = 0; i < this.boardColorMat.length; i++){
+        for(var j = 0; j < this.boardColorMat.length; j++){
+            stack.push();
+            stack.multiply(translate(-i*2,0,j*2));
+            gl.uniformMatrix4fv(uModel_viewColor, false, flatten(stack.top()));
+            gl.uniform4fv(pickingColor,vec4(i/256.0 ,j/256.0,0,1));
+            Shapes.drawPrimitive(Shapes.cube); // cube
+            stack.pop();
+        }
+    }
+    stack.pop();
+
+
+    stack.push();
+    stack.multiply(translate(0,0.2,0,1));
+
+    for(var i = 0; i < this.boardColorMat.length; i++){
+        for(var j = 0; j < this.boardColorMat.length; j++) {
+            var piece = this.get(i,j);
+            if (piece != 0) {
+                stack.push();
+                stack.multiply(translate(-i*2,0,j*2));
+                gl.uniformMatrix4fv(uModel_viewColor, false, flatten(stack.top()));
+                gl.uniform4fv(pickingColor,vec4(i/256.0,j/256.0,0,1));
+
+                this.get(i,j).model.draw(piece.isWhite); // cube
+                stack.pop();
+            }
+
+        }
+    }
+    stack.pop();
+};
+
+Board.prototype.selectedPiece = function (letter,number) {
+  var piece =  this.get(letter,number);
+
+  if((piece !== 0) && piece.isWhite === this.whiteTurn){
+    this.selected = piece;
+    this.lightUp = piece.canMove(this);
+    console.log(this.selected);
+  }
+};
+
+Board.prototype.clickMove = function () {
+    //this.drawColor();
+    renderColor();
+    gl.flush();
+    gl.finish();
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+
+    var data = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+    var data = new Uint8Array(4);
+    gl.readPixels(mouseState.x - mouseState.canvasPosition[0],(mouseState.canvasPosition[1] + gl.drawingBufferHeight) - mouseState.y,1,1,gl.RGBA,gl.UNSIGNED_BYTE, data);
+    var colorClicked = vec4();
+
+    var letter = data[0];
+    var number = data[1];
+    if (letter <= 7 && number <= 7) {
+        if (this.selected != null) {
+            if (this.get(letter,number).isWhite === this.whiteTurn) {
+                this.lightUp = [];
+                this.selectedPiece(letter, number);
+            } else {
+                this.makeMove(this.whiteTurn,this.selected.letter,this.selected.number,letter, number);
+            }
+        } else {
+            this.selectedPiece(letter, number);
+        }
+    } else {
+        this.selected = null;
+        this.lightUp = [];
+    }
+
+    render();
+};
 

@@ -20,7 +20,7 @@ PawnModel.prototype.draw = function (team) {
     if (Shapes.pawn.ready) {
         for (var i in Shapes.pawn.geometries) {
             for (var j = 0; j < Shapes.pawn.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.pawn.geometries[i][j]);
             }
         }
@@ -41,7 +41,7 @@ RookModel.prototype.draw = function (team) {
     if (Shapes.rook.ready) {
         for (var i in Shapes.rook.geometries) {
             for (var j = 0; j < Shapes.rook.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.rook.geometries[i][j]);
             }
         }
@@ -69,7 +69,7 @@ KnightModel.prototype.draw = function (team) {
     if (Shapes.knight.ready) {
         for (var i in Shapes.knight.geometries) {
             for (var j = 0; j < Shapes.knight.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.knight.geometries[i][j]);
             }
         }
@@ -90,7 +90,7 @@ BishopModel.prototype.draw = function (team) {
     if (Shapes.bishop.ready) {
         for (var i in Shapes.bishop.geometries) {
             for (var j = 0; j < Shapes.bishop.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.bishop.geometries[i][j]);
             }
         }
@@ -111,7 +111,7 @@ KingModel.prototype.draw = function (team) {
     if (Shapes.king.ready) {
         for (var i in Shapes.king.geometries) {
             for (var j = 0; j < Shapes.king.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.king.geometries[i][j]);
             }
         }
@@ -132,11 +132,11 @@ QueenModel.prototype.draw = function (team) {
     if (Shapes.queen.ready) {
         for (var i in Shapes.queen.geometries) {
             for (var j = 0; j < Shapes.queen.geometries[i].length; j++) {
-                gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+                gl.uniformMatrix4fv((shaderCheck ? uModel_view : uModel_viewColor), false, flatten(stack.top()));
                 Shapes.drawPrimitive(Shapes.queen.geometries[i][j]);
             }
         }
     }
 
     stack.pop();
-}
+};

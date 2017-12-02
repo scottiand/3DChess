@@ -63,12 +63,15 @@ function setMouseEventHandler() {
         mouseState.starty = e.clientY;
         mouseState.x = e.clientX;
         mouseState.y = e.clientY;
+        mouseState.canvasPosition = getPosition(canvas);
+        //mouseState.y2 = getPosition(mouseState.y);
         mouseState.delx = 0;
         mouseState.dely = 0;
         mouseState.down = true;
         mouseState.action = e.button;
         document.getElementById("mouseAction").innerHTML ="<b>Action:</b> Mouse Down <br>" ;
         document.getElementById("mouseState").innerHTML = mouseState.displayMouseState();
+        board.clickMove();
     });
     canvas.addEventListener("mouseup", function (e) {
        // console.log("mouse up");
@@ -113,4 +116,26 @@ function setKeyEventHandler() {
         document.getElementById("keypress").innerHTML = "<b>Key pressed:</b> " + c + "<br>";
         render();
     };
+}
+
+function getPosition(el) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while (el) {
+        if (el.tagName == "BODY") {
+            // deal with browser quirks with body/window/document and page scroll
+            var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+            var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+
+            xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+            yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+        } else {
+            xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+            yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+        }
+
+        el = el.offsetParent;
+    }
+    return vec2(xPosition, yPosition);
 }

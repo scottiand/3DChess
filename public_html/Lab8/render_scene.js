@@ -9,10 +9,17 @@ var vTexCoords;   // shader variable attrib location for texCoord
 var uColor;       // shader uniform variable location for color
 var uProjection;  //  shader uniform variable for projection matrix
 var uModel_view;  //  shader uniform variable for model-view matrix
+var uModel_viewColor;
+var uProjectionColor;
 var uTexture;  //  shader uniform variable for texture
 var uColorMode;   // shader uniform variable for color mode
 var lighting;     // lighting object
 var program;      // program object for WebGL
+var programColor; //program object for our color shader
+var pickingColor;
+var vColorPos;
+
+var shaderCheck;
 
 //var phong;
 
@@ -90,7 +97,9 @@ function initTextures() {
 function shaderSetup() {
     //  Load shaders
     program = initShaders(gl, "vertex-shader", "fragment-shader");
+    programColor = initShaders(gl, "vertexShader-Color", "fragmentShader-Color");
     gl.useProgram(program);
+    shaderCheck = true;
 
     lighting = new Lighting();
     lighting.setUp();
@@ -98,6 +107,8 @@ function shaderSetup() {
     // get handles for shader attribute variables. 
     // We will need these in setting up buffers.
     vPosition = gl.getAttribLocation(program, "vPosition");
+    vColorPos = gl.getAttribLocation(programColor, "vColorPos");
+
     vColor = gl.getAttribLocation(program, "vColor"); // we won't use vertex here
     vNormal = gl.getAttribLocation(program, "vNormal"); 
     vTexCoords = gl.getAttribLocation(program, "vTexCoords");
@@ -110,16 +121,24 @@ function shaderSetup() {
     uModel_view = gl.getUniformLocation(program, "uModel_view");  // model-view matrix
     uTexture = gl.getUniformLocation(program, "uTexture");  // texture
     uColorMode = gl.getUniformLocation(program, "uColorMode"); // Color Mode
+
+    pickingColor = gl.getUniformLocation(programColor,"pickingColor");
+    uModel_viewColor = gl.getUniformLocation(programColor, "uModel_viewColor");
+    uProjectionColor = gl.getUniformLocation(programColor, "uProjectionColor");
+
+
+
 }
 
 function render() {
-    //var t = new Board();
-    
+
+    gl.useProgram(program);
+    shaderCheck = true;
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    var projMat = camera.calcProjectionMat();   // Projection matrix  
+    var projMat = camera.calcProjectionMat();   // Projection matrix
     gl.uniformMatrix4fv(uProjection, false, flatten(projMat));
-    
+
     var viewMat = camera.calcViewMat();   // View matrix
 
     stack.clear();
@@ -140,9 +159,31 @@ function render() {
 
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
-
+    gl.uniform1f(uColorMode,1);
     board.draw();//chessboard
 
+
+}
+
+
+function renderColor () {
+    gl.useProgram(programColor);
+    shaderCheck = false;
+    gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    var projMat = camera.calcProjectionMat();   // Projection matrix
+    gl.uniformMatrix4fv(uProjectionColor, false, flatten(projMat));
+
+    var viewMat = camera.calcViewMat();   // View matrix
+
+    stack.clear();
+    stack.multiply(viewMat);
+
+
+    stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
+    stack.multiply(viewMat);
+
+    board.drawColor();//chessboard
 
 }
 
