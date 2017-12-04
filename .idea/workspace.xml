@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7200e8a-4b8e-4767-a43f-c1e1cd753aa3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js" afterPath="$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js" />
-      <change beforePath="$PROJECT_DIR$/public_html/Lab8/render_scene.js" afterPath="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,36 +26,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="render_scene.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="render_scene.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="-1238">
               <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+            <state relative-caret-position="189">
+              <caret line="197" column="50" lean-forward="false" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#2018#2059#0" expanded="false" />
                 <element signature="e#2117#2173#0" expanded="false" />
                 <element signature="e#2212#2597#0" expanded="false" />
                 <element signature="e#2643#3391#0" expanded="false" />
+                <element signature="e#3464#6016#0" expanded="false" />
                 <element signature="e#6054#6334#0" expanded="false" />
                 <element signature="e#6372#6497#0" expanded="false" />
-                <element signature="e#6540#7272#0" expanded="false" />
-                <element signature="e#7316#8061#0" expanded="false" />
-                <element signature="e#8104#9289#0" expanded="false" />
-                <element signature="e#9349#9553#0" expanded="false" />
-                <element signature="e#9447#9551#0" expanded="false" />
-                <element signature="e#9596#10628#0" expanded="false" />
-                <element signature="e#10952#11295#0" expanded="false" />
+                <element signature="e#7716#8461#0" expanded="false" />
+                <element signature="e#8504#9689#0" expanded="false" />
+                <element signature="e#9749#9953#0" expanded="false" />
+                <element signature="e#9847#9951#0" expanded="false" />
+                <element signature="e#9996#11028#0" expanded="false" />
+                <element signature="e#11352#11695#0" expanded="false" />
+                <element signature="e#11823#12813#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -171,8 +170,8 @@
         <option value="$PROJECT_DIR$/public_html/Lab8/geometry/Shapes.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Camera.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js" />
-        <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
         <option value="$PROJECT_DIR$/public_html/Lab8/render_scene.js" />
+        <option value="$PROJECT_DIR$/public_html/Lab8/Chess/Board.js" />
       </list>
     </option>
   </component>
@@ -290,12 +289,12 @@
       <updated>1511828956541</updated>
       <workItem from="1511828958894" duration="709000" />
       <workItem from="1511832414937" duration="10895000" />
-      <workItem from="1511995104084" duration="25104000" />
+      <workItem from="1511995104084" duration="25797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36708000" />
+    <option name="totallyTimeSpent" value="37401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="127" y="22" width="1222" height="738" extended-state="0" />
@@ -367,15 +366,16 @@
             <element signature="e#2117#2173#0" expanded="false" />
             <element signature="e#2212#2597#0" expanded="false" />
             <element signature="e#2643#3391#0" expanded="false" />
+            <element signature="e#3464#6016#0" expanded="false" />
             <element signature="e#6054#6334#0" expanded="false" />
             <element signature="e#6372#6497#0" expanded="false" />
-            <element signature="e#6540#7272#0" expanded="false" />
-            <element signature="e#7316#8061#0" expanded="false" />
-            <element signature="e#8104#9289#0" expanded="false" />
-            <element signature="e#9349#9553#0" expanded="false" />
-            <element signature="e#9447#9551#0" expanded="false" />
-            <element signature="e#9596#10628#0" expanded="false" />
-            <element signature="e#10952#11295#0" expanded="false" />
+            <element signature="e#7716#8461#0" expanded="false" />
+            <element signature="e#8504#9689#0" expanded="false" />
+            <element signature="e#9749#9953#0" expanded="false" />
+            <element signature="e#9847#9951#0" expanded="false" />
+            <element signature="e#9996#11028#0" expanded="false" />
+            <element signature="e#11352#11695#0" expanded="false" />
+            <element signature="e#11823#12813#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -447,7 +447,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -475,7 +475,7 @@
         <state relative-caret-position="425">
           <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -596,34 +596,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1238">
+          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+        <state relative-caret-position="189">
+          <caret line="197" column="50" lean-forward="false" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#2018#2059#0" expanded="false" />
             <element signature="e#2117#2173#0" expanded="false" />
             <element signature="e#2212#2597#0" expanded="false" />
             <element signature="e#2643#3391#0" expanded="false" />
+            <element signature="e#3464#6016#0" expanded="false" />
             <element signature="e#6054#6334#0" expanded="false" />
             <element signature="e#6372#6497#0" expanded="false" />
-            <element signature="e#6540#7272#0" expanded="false" />
-            <element signature="e#7316#8061#0" expanded="false" />
-            <element signature="e#8104#9289#0" expanded="false" />
-            <element signature="e#9349#9553#0" expanded="false" />
-            <element signature="e#9447#9551#0" expanded="false" />
-            <element signature="e#9596#10628#0" expanded="false" />
-            <element signature="e#10952#11295#0" expanded="false" />
+            <element signature="e#7716#8461#0" expanded="false" />
+            <element signature="e#8504#9689#0" expanded="false" />
+            <element signature="e#9749#9953#0" expanded="false" />
+            <element signature="e#9847#9951#0" expanded="false" />
+            <element signature="e#9996#11028#0" expanded="false" />
+            <element signature="e#11352#11695#0" expanded="false" />
+            <element signature="e#11823#12813#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/render_scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -194,11 +194,20 @@ Board.prototype.drawBoard = function () {
             stack.push();
             stack.multiply(translate(-i*2,0,j*2));
             gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
-            gl.uniform4fv(uColor,(this.boardColorMat[i][j]));
-
+            if (this.selected != null && this.selected.letter === i && this.selected.number === j) {
+                gl.uniform4fv(uColor, vec4(0, 1, 0, 1));
+            } else {
+                gl.uniform4fv(uColor,(this.boardColorMat[i][j]));
+            }
             for(var k = 0; k < this.lightUp.length; k++){
                 if(this.lightUp[k][0] === i && this.lightUp[k][1] === j) {
-                    gl.uniform4fv(uColor, vec4(1, 0, 0, 1));
+                    var piece = this.get(i,j);
+                    if (piece === 0) {
+                        gl.uniform4fv(uColor, vec4(0, 0, 1, 1));
+                    } else {
+                        gl.uniform4fv(uColor, vec4(1,0,0,1));
+                    }
+
                 }
             }
 
