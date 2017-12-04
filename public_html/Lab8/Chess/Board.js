@@ -48,6 +48,7 @@ function Board() {
     }//Add teams to the board
 
     //this.print();
+    this.moveCamera();
 }
 
 Board.prototype.get = function (letter, number) {
@@ -131,6 +132,8 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
                     for (var j = 0; j < moves.length; j++) {
                         if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
                             valid = false;
+                            alert("You're in check!");
+
                         }
                     }
                 }
@@ -170,6 +173,7 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             this.whiteTurn = !this.whiteTurn;
             this.selected = null;
             this.lightUp = [];
+            this.moveCamera();
         } else {
             console.log("Invalid Move! Cannot move there!");
         }
@@ -194,7 +198,7 @@ Board.prototype.copy = function () {
 Board.prototype.draw = function () {
 
     stack.push();
-    stack.multiply(translate(8,0,-8));
+    stack.multiply(translate(7,0,-7));
 
     this.drawBoard();
     this.drawPieces();
@@ -254,7 +258,7 @@ Board.prototype.drawPieces = function () {
 };
 
 Board.prototype.drawColor = function () {
-    stack.multiply(translate(8,0,-8));
+    stack.multiply(translate(7,0,-7));
 
     stack.push();
     stack.multiply(scalem(1,0.25,1));
@@ -333,5 +337,19 @@ Board.prototype.clickMove = function () {
     }
 
     render();
+};
+
+Board.prototype.moveCamera = function () {
+
+        var yRot = 0;
+        if (!this.whiteTurn) {
+            yRot = 180;
+        }
+    setTimeout(function(){
+        camera.reset();
+        camera.tumble(rotateX(-45),rotateY(yRot));
+        render();
+    }, 500);
+
 };
 

@@ -9,12 +9,6 @@
 
 var Shapes = {};   // set up Shapes namespace
 
-//var defaultMaterial = {
-//    ambient: vec3 (.5, .5, 0),
-//    diffuse: vec3 (.5, .5, 0),
-//    specular: vec3 (0, 0, 0),
-//    shininess: 1
-//};
 
 Shapes.cube = new Cube();  
 Shapes.axis = new Axis();
@@ -28,12 +22,14 @@ Shapes.bishop = new DaeModel();
 Shapes.knight = new DaeModel();
 Shapes.queen = new DaeModel();
 Shapes.king = new DaeModel();
+Shapes.axis = new Axis();
 
 Shapes.initShapes = function () {
     Shapes.initBuffers(Shapes.cube);
     Shapes.initBuffers(Shapes.cylinder);
     Shapes.initBuffers(Shapes.disk);
     Shapes.initBuffers(Shapes.cone);
+    Shapes.axis.initBuffer();
     Shapes.grab(Shapes.pawn,"Models/CenteredPawn.dae");
     Shapes.grab(Shapes.bishop,"Models/CenteredBishop.dae");
     Shapes.grab(Shapes.rook,"Models/CenteredRook.dae");
