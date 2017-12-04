@@ -97,9 +97,15 @@ Pawn.prototype.canMove = function (board) {
 };
 
 Pawn.prototype.move = function (letter, number) {
-    this.letter = letter;
-    this.number = number;
+    var piece = this;
+    if ((this.isWhite && number === 7) ||(!this.isWhite && number === 0)) {
+        board.promote(this.letter, this.number);
+        piece = board.get(this.letter, this.number);
+    }
+    piece.letter = letter;
+    piece.number = number;
     this.firstMove = false;
+
 };
 
 Pawn.prototype.symbol = function () {

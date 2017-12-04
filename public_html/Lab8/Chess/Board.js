@@ -48,7 +48,7 @@ function Board() {
     }//Add teams to the board
 
     //this.print();
-    this.moveCamera();
+    //this.moveCamera();
 }
 
 Board.prototype.get = function (letter, number) {
@@ -56,6 +56,7 @@ Board.prototype.get = function (letter, number) {
 };
 
 Board.prototype.set = function (value) {
+    console.log("value" + value);
     this.grid.set(value, value.letter, value.number);
 };
 
@@ -116,30 +117,7 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
         }
         //console.log("After initial validity test: " + valid);
         if (valid) {
-            var enemyTeam = isWhite ? this.blackTeam : this.whiteTeam;
-            var friendKing = isWhite ? this.whiteKing : this.blackKing;
-            var testBoard = this.copy();
-            var enemyIndex = enemyTeam.indexOf(testBoard.get(let2,num2));
-            piece.letter = let2;
-            piece.number = num2;
-            testBoard.set(piece);
-            testBoard.remove(let1, num1);
-
-            var kingLoc = piece === friendKing ? vec2(let2, num2) : vec2(friendKing.letter, friendKing.number);
-            for (var i = 0; i < enemyTeam.length; i++) {
-                if (i != enemyIndex) {
-                    var moves = enemyTeam[i].canMove(testBoard);
-                    for (var j = 0; j < moves.length; j++) {
-                        if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
-                            valid = false;
-                            alert("You're in check!");
-
-                        }
-                    }
-                }
-            }//Test if this move puts the king in check
-            piece.letter = let1;
-            piece.number = num1;
+            valid = !this.moveResultsInCheck(piece, let1, num1, let2, num2);
         }// Test if the king is in check
         //console.log("After check-based validity test: " + valid);
         if (valid) { // If the player's move is valid
@@ -167,6 +145,7 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             }// Kill the enemy that is taken
             var movingPiece = this.get(let1, num1);
             movingPiece.move(let2, num2);
+            movingPiece = this.get(let1, num1); // If a pawn is replaced, we need to get the new piece
             this.set(movingPiece); // Move the piece
             this.remove(let1, num1); // remove the original
             this.print();
@@ -353,3 +332,45 @@ Board.prototype.moveCamera = function () {
 
 };
 
+Board.prototype.promote = function (letter, number) {
+    var piece = this.get(letter, number);
+    console.log("piece" + piece);
+    this.remove(letter, number);
+    var index = this.whiteTeam.indexOf(piece);
+    var newPiece = new Queen(piece.isWhite, piece.letter, piece.number);
+    this.whiteTeam[index] = newPiece;
+    console.log("newPiece" + newPiece.symbol());
+    this.set(newPiece);
+};
+
+Board.prototype.checkmate = function () {
+
+};
+
+Board.prototype.moveResultsInCheck = function (piece, let1, num1, let2, num2) {
+    var valid = false;
+
+    var enemyTeam = piece.isWhite ? this.blackTeam : this.whiteTeam;
+    var friendKing = piece.isWhite ? this.whiteKing : this.blackKing;
+    var testBoard = this.copy();
+    var enemyIndex = enemyTeam.indexOf(testBoard.get(let2,num2));
+    piece.letter = let2;
+    piece.number = num2;
+    testBoard.set(piece);
+    testBoard.remove(let1, num1);
+    var kingLoc = piece === friendKing ? vec2(let2, num2) : vec2(friendKing.letter, friendKing.number);
+    for (var i = 0; i < enemyTeam.length; i++) {
+        if (i != enemyIndex) {
+            var moves = enemyTeam[i].canMove(testBoard);
+            for (var j = 0; j < moves.length; j++) {
+                if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
+                    valid = true;
+                    //alert("You're in check!");
+                }
+            }
+        }
+    }//Test if this move puts the king in check
+    piece.letter = let1;
+    piece.number = num1;
+    return valid;
+};

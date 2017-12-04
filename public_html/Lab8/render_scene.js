@@ -75,6 +75,7 @@ window.onload = function init()
     Shapes.initShapes();  // create the primitive and other shapes    
     initTextures();
     board = new Board();
+    board.moveCamera();
     board.print();
     
     render();
