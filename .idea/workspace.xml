@@ -39,24 +39,24 @@
       <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="197" column="50" lean-forward="false" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
+            <state relative-caret-position="261">
+              <caret line="166" column="31" lean-forward="true" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#2018#2059#0" expanded="false" />
-                <element signature="e#2117#2173#0" expanded="false" />
-                <element signature="e#2212#2597#0" expanded="false" />
-                <element signature="e#2643#3391#0" expanded="false" />
-                <element signature="e#3464#6016#0" expanded="false" />
-                <element signature="e#6054#6334#0" expanded="false" />
-                <element signature="e#6372#6497#0" expanded="false" />
-                <element signature="e#7716#8461#0" expanded="false" />
-                <element signature="e#8504#9689#0" expanded="false" />
-                <element signature="e#9749#9953#0" expanded="false" />
-                <element signature="e#9847#9951#0" expanded="false" />
-                <element signature="e#9996#11028#0" expanded="false" />
-                <element signature="e#11352#11695#0" expanded="false" />
-                <element signature="e#11823#12813#0" expanded="false" />
+                <element signature="e#2454#2495#0" expanded="false" />
+                <element signature="e#2553#2609#0" expanded="false" />
+                <element signature="e#2648#3033#0" expanded="false" />
+                <element signature="e#3079#3827#0" expanded="false" />
+                <element signature="e#6591#6871#0" expanded="false" />
+                <element signature="e#6909#7034#0" expanded="false" />
+                <element signature="e#7077#8209#0" expanded="false" />
+                <element signature="e#8253#8998#0" expanded="false" />
+                <element signature="e#9041#10226#0" expanded="false" />
+                <element signature="e#10286#10490#0" expanded="false" />
+                <element signature="e#10384#10488#0" expanded="false" />
+                <element signature="e#10533#11565#0" expanded="false" />
+                <element signature="e#11609#11834#0" expanded="false" />
+                <element signature="e#11889#12232#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -77,12 +77,13 @@
       <file leaf-file-name="Pieces.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+            <state relative-caret-position="69">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#Pawn#0" expanded="false" />
                 <element signature="e#1218#2627#0" expanded="false" />
+                <element signature="e#2678#2970#0" expanded="false" />
                 <element signature="e#3009#3115#0" expanded="false" />
                 <element signature="n#!!block;n#Knight#0" expanded="false" />
                 <element signature="e#3508#3986#0" expanded="false" />
@@ -182,7 +183,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="127" />
+    <option name="x" value="204" />
     <option name="y" value="22" />
     <option name="width" value="1222" />
     <option name="height" value="738" />
@@ -289,15 +290,15 @@
       <updated>1511828956541</updated>
       <workItem from="1511828958894" duration="709000" />
       <workItem from="1511832414937" duration="10895000" />
-      <workItem from="1511995104084" duration="25797000" />
+      <workItem from="1511995104084" duration="29189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37401000" />
+    <option name="totallyTimeSpent" value="40793000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="127" y="22" width="1222" height="738" extended-state="0" />
+    <frame x="204" y="22" width="1222" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -335,7 +336,7 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -362,20 +363,20 @@
           <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#2018#2059#0" expanded="false" />
-            <element signature="e#2117#2173#0" expanded="false" />
-            <element signature="e#2212#2597#0" expanded="false" />
-            <element signature="e#2643#3391#0" expanded="false" />
-            <element signature="e#3464#6016#0" expanded="false" />
-            <element signature="e#6054#6334#0" expanded="false" />
-            <element signature="e#6372#6497#0" expanded="false" />
-            <element signature="e#7716#8461#0" expanded="false" />
-            <element signature="e#8504#9689#0" expanded="false" />
-            <element signature="e#9749#9953#0" expanded="false" />
-            <element signature="e#9847#9951#0" expanded="false" />
-            <element signature="e#9996#11028#0" expanded="false" />
-            <element signature="e#11352#11695#0" expanded="false" />
-            <element signature="e#11823#12813#0" expanded="false" />
+            <element signature="e#2454#2495#0" expanded="false" />
+            <element signature="e#2553#2609#0" expanded="false" />
+            <element signature="e#2648#3033#0" expanded="false" />
+            <element signature="e#3079#3827#0" expanded="false" />
+            <element signature="e#6591#6871#0" expanded="false" />
+            <element signature="e#6909#7034#0" expanded="false" />
+            <element signature="e#7077#8209#0" expanded="false" />
+            <element signature="e#8253#8998#0" expanded="false" />
+            <element signature="e#9041#10226#0" expanded="false" />
+            <element signature="e#10286#10490#0" expanded="false" />
+            <element signature="e#10384#10488#0" expanded="false" />
+            <element signature="e#10533#11565#0" expanded="false" />
+            <element signature="e#11609#11834#0" expanded="false" />
+            <element signature="e#11889#12232#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -545,39 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#!!block;n#Pawn#0" expanded="false" />
-            <element signature="e#1218#2627#0" expanded="false" />
-            <element signature="e#3009#3115#0" expanded="false" />
-            <element signature="n#!!block;n#Knight#0" expanded="false" />
-            <element signature="e#3508#3986#0" expanded="false" />
-            <element signature="e#4039#4094#0" expanded="false" />
-            <element signature="e#4135#4241#0" expanded="false" />
-            <element signature="n#!!block;n#Rook#0" expanded="false" />
-            <element signature="e#4637#4720#0" expanded="false" />
-            <element signature="e#4759#4863#0" expanded="false" />
-            <element signature="e#4908#5592#0" expanded="false" />
-            <element signature="n#!!block;n#Bishop#0" expanded="false" />
-            <element signature="e#5935#6018#0" expanded="false" />
-            <element signature="e#6059#6163#0" expanded="false" />
-            <element signature="e#6210#6894#0" expanded="false" />
-            <element signature="n#!!block;n#Queen#0" expanded="false" />
-            <element signature="e#7276#7359#0" expanded="false" />
-            <element signature="e#7399#7503#0" expanded="false" />
-            <element signature="e#7549#8234#0" expanded="false" />
-            <element signature="n#!!block;n#King#0" expanded="false" />
-            <element signature="e#8613#8696#0" expanded="false" />
-            <element signature="e#8735#8839#0" expanded="false" />
-            <element signature="e#8884#9626#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/Lab8/start_here.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-187">
@@ -604,26 +572,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Pieces.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="197" column="50" lean-forward="false" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
+        <state relative-caret-position="69">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#2018#2059#0" expanded="false" />
-            <element signature="e#2117#2173#0" expanded="false" />
-            <element signature="e#2212#2597#0" expanded="false" />
-            <element signature="e#2643#3391#0" expanded="false" />
-            <element signature="e#3464#6016#0" expanded="false" />
-            <element signature="e#6054#6334#0" expanded="false" />
-            <element signature="e#6372#6497#0" expanded="false" />
-            <element signature="e#7716#8461#0" expanded="false" />
-            <element signature="e#8504#9689#0" expanded="false" />
-            <element signature="e#9749#9953#0" expanded="false" />
-            <element signature="e#9847#9951#0" expanded="false" />
-            <element signature="e#9996#11028#0" expanded="false" />
-            <element signature="e#11352#11695#0" expanded="false" />
-            <element signature="e#11823#12813#0" expanded="false" />
+            <element signature="n#!!block;n#Pawn#0" expanded="false" />
+            <element signature="e#1218#2627#0" expanded="false" />
+            <element signature="e#2678#2970#0" expanded="false" />
+            <element signature="e#3009#3115#0" expanded="false" />
+            <element signature="n#!!block;n#Knight#0" expanded="false" />
+            <element signature="e#3508#3986#0" expanded="false" />
+            <element signature="e#4039#4094#0" expanded="false" />
+            <element signature="e#4135#4241#0" expanded="false" />
+            <element signature="n#!!block;n#Rook#0" expanded="false" />
+            <element signature="e#4637#4720#0" expanded="false" />
+            <element signature="e#4759#4863#0" expanded="false" />
+            <element signature="e#4908#5592#0" expanded="false" />
+            <element signature="n#!!block;n#Bishop#0" expanded="false" />
+            <element signature="e#5935#6018#0" expanded="false" />
+            <element signature="e#6059#6163#0" expanded="false" />
+            <element signature="e#6210#6894#0" expanded="false" />
+            <element signature="n#!!block;n#Queen#0" expanded="false" />
+            <element signature="e#7276#7359#0" expanded="false" />
+            <element signature="e#7399#7503#0" expanded="false" />
+            <element signature="e#7549#8234#0" expanded="false" />
+            <element signature="n#!!block;n#King#0" expanded="false" />
+            <element signature="e#8613#8696#0" expanded="false" />
+            <element signature="e#8735#8839#0" expanded="false" />
+            <element signature="e#8884#9626#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/Lab8/Chess/Board.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="166" column="31" lean-forward="true" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2454#2495#0" expanded="false" />
+            <element signature="e#2553#2609#0" expanded="false" />
+            <element signature="e#2648#3033#0" expanded="false" />
+            <element signature="e#3079#3827#0" expanded="false" />
+            <element signature="e#6591#6871#0" expanded="false" />
+            <element signature="e#6909#7034#0" expanded="false" />
+            <element signature="e#7077#8209#0" expanded="false" />
+            <element signature="e#8253#8998#0" expanded="false" />
+            <element signature="e#9041#10226#0" expanded="false" />
+            <element signature="e#10286#10490#0" expanded="false" />
+            <element signature="e#10384#10488#0" expanded="false" />
+            <element signature="e#10533#11565#0" expanded="false" />
+            <element signature="e#11609#11834#0" expanded="false" />
+            <element signature="e#11889#12232#0" expanded="false" />
           </folding>
         </state>
       </provider>

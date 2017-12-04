@@ -15,38 +15,49 @@ function Board() {
     this.whiteTeam = [];
     this.blackTeam = [];
 
-    //White Team
-    this.whiteTeam.push(new Rook(true, 0, 0));
+    this.whiteTeam.push(new Queen(true, 1, 7));
+    this.whiteTeam.push(new Queen(true, 3, 6));
     this.whiteTeam.push(new Knight(true, 1, 0));
-    this.whiteTeam.push(new Bishop(true, 2, 0));
-    this.whiteTeam.push(new Queen(true, 3, 0));
-    this.whiteTeam.push(new King(true, 4, 0));
-    this.whiteTeam.push(new Bishop(true, 5, 0));
-    this.whiteTeam.push(new Knight(true, 6, 0));
-    this.whiteTeam.push(new Rook(true, 7, 0));
+    this.whiteTeam.push(new King(true, 0, 0));
+
+    this.whiteKing = this.whiteTeam[3];
+
+    this.blackTeam.push(new King(false, 2, 3));
+
+    this.blackKing = this.blackTeam[0];
+
+    //White Team
+    // this.whiteTeam.push(new Rook(true, 0, 0));
+    // this.whiteTeam.push(new Knight(true, 1, 0));
+    // this.whiteTeam.push(new Bishop(true, 2, 0));
+    // this.whiteTeam.push(new Queen(true, 3, 0));
+    // this.whiteTeam.push(new King(true, 4, 0));
+    // this.whiteTeam.push(new Bishop(true, 5, 0));
+    // this.whiteTeam.push(new Knight(true, 6, 0));
+    // this.whiteTeam.push(new Rook(true, 7, 0));
     //Black Team
-    this.blackTeam.push(new Rook(false, 0, 7));
-    this.blackTeam.push(new Knight(false, 1, 7));
-    this.blackTeam.push(new Bishop(false, 2, 7));
-    this.blackTeam.push(new Queen(false, 4, 7));
-    this.blackTeam.push(new King(false, 3, 7));
-    this.blackTeam.push(new Bishop(false, 5, 7));
-    this.blackTeam.push(new Knight(false, 6, 7));
-    this.blackTeam.push(new Rook(false, 7, 7));
+    // this.blackTeam.push(new Rook(false, 0, 7));
+    // this.blackTeam.push(new Knight(false, 1, 7));
+    // this.blackTeam.push(new Bishop(false, 2, 7));
+    // this.blackTeam.push(new Queen(false, 4, 7));
+    // this.blackTeam.push(new King(false, 3, 7));
+    // this.blackTeam.push(new Bishop(false, 5, 7));
+    // this.blackTeam.push(new Knight(false, 6, 7));
+    // this.blackTeam.push(new Rook(false, 7, 7));
 
-    this.whiteKing = this.whiteTeam[4];
-    this.blackKing = this.blackTeam[4];
-
-    for (var i = 0; i < 8; i++) {
-        this.whiteTeam.push(new Pawn(true, i, 1));
-        this.blackTeam.push(new Pawn(false, i, 6));
-    }// Add pawns to both teams
-
-    for (var i = 0; i < this.whiteTeam.length; i++) {
-        this.set(this.whiteTeam[i]);
-        this.set(this.blackTeam[i]);
+    // this.whiteKing = this.whiteTeam[4];
+    // this.blackKing = this.blackTeam[4];
+    //
+    // for (var i = 0; i < 8; i++) {
+    //     this.whiteTeam.push(new Pawn(true, i, 1));
+    //     this.blackTeam.push(new Pawn(false, i, 6));
+    // }// Add pawns to both teams
+    //
+     for (var i = 0; i < this.whiteTeam.length; i++) {
+         this.set(this.whiteTeam[i]);
+         //this.set(this.blackTeam[i]);
     }//Add teams to the board
-
+    this.set(this.blackKing);
     //this.print();
     //this.moveCamera();
 }
@@ -153,6 +164,9 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             this.selected = null;
             this.lightUp = [];
             this.moveCamera();
+            if (this.checkmate(this.whiteTurn)) {
+                alert("Checkmate!");
+            }
         } else {
             console.log("Invalid Move! Cannot move there!");
         }
@@ -352,7 +366,28 @@ Board.prototype.promote = function (letter, number) {
     this.set(newPiece);
 };
 
-Board.prototype.checkmate = function () {
+Board.prototype.checkmate = function (isWhite) {
+    var checkmate = true;
+
+    console.log("isInCheck" + this.isInCheck(isWhite));
+    console.log("isWhite" + isWhite);
+    if (this.isInCheck(isWhite)) {
+        var friendTeam = isWhite ? this.whiteTeam : this.blackTeam;
+        for (var i = 0; i < friendTeam.length; i++) {
+            var piece = friendTeam[i];
+            var moves = piece.canMove(this);
+            for (var j = 0; j <= moves; j++) {
+                if (!this.moveResultsInCheck(piece, piece.letter, piece.number, moves[0], moves[1])) {
+                    checkmate = false;
+                    break;
+                }
+            }
+        }
+        return checkmate;
+    } else {
+        return false;
+    }
+
 
 };
 
@@ -382,4 +417,20 @@ Board.prototype.moveResultsInCheck = function (piece, let1, num1, let2, num2) {
     piece.letter = let1;
     piece.number = num1;
     return valid;
+};
+
+Board.prototype.isInCheck = function (isWhite) {
+    var enemyTeam = isWhite ? this.blackTeam : this.whiteTeam;
+    var friendKing = isWhite ? this.whiteKing : this.blackKing;
+
+    var kingLoc = vec2(friendKing.letter, friendKing.number);
+    for (var i = 0; i < enemyTeam.length; i++) {
+        var moves = enemyTeam[i].canMove(this);
+        for (var j = 0; j < moves.length; j++) {
+            if (moves[j][0] === kingLoc[0] && moves[j][1] === kingLoc[1]) {
+                return true;
+            }
+        }
+    }//Test if this move puts the king in check
+    return false;
 };
