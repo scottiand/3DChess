@@ -11,53 +11,54 @@ function Board() {
     this.whiteTaken = [];
     this.blackTaken = [];
     this.lightUp = []; //potential moves for pieces on the board
+    this.isCheckmate = false;
 
     this.whiteTeam = [];
     this.blackTeam = [];
 
-    this.whiteTeam.push(new Queen(true, 1, 7));
-    this.whiteTeam.push(new Queen(true, 3, 6));
-    this.whiteTeam.push(new Knight(true, 1, 0));
-    this.whiteTeam.push(new King(true, 0, 0));
-
-    this.whiteKing = this.whiteTeam[3];
-
-    this.blackTeam.push(new King(false, 2, 3));
-
-    this.blackKing = this.blackTeam[0];
+    // this.whiteTeam.push(new Queen(true, 1, 7));
+    // this.whiteTeam.push(new Queen(true, 3, 6));
+    // this.whiteTeam.push(new Knight(true, 1, 0));
+    // this.whiteTeam.push(new King(true, 0, 0));
+    //
+    // this.whiteKing = this.whiteTeam[3];
+    //
+    // this.blackTeam.push(new King(false, 2, 3));
+    //
+    // this.blackKing = this.blackTeam[0];
 
     //White Team
-    // this.whiteTeam.push(new Rook(true, 0, 0));
-    // this.whiteTeam.push(new Knight(true, 1, 0));
-    // this.whiteTeam.push(new Bishop(true, 2, 0));
-    // this.whiteTeam.push(new Queen(true, 3, 0));
-    // this.whiteTeam.push(new King(true, 4, 0));
-    // this.whiteTeam.push(new Bishop(true, 5, 0));
-    // this.whiteTeam.push(new Knight(true, 6, 0));
-    // this.whiteTeam.push(new Rook(true, 7, 0));
+    this.whiteTeam.push(new Rook(true, 0, 0));
+    this.whiteTeam.push(new Knight(true, 1, 0));
+    this.whiteTeam.push(new Bishop(true, 2, 0));
+    this.whiteTeam.push(new Queen(true, 3, 0));
+    this.whiteTeam.push(new King(true, 4, 0));
+    this.whiteTeam.push(new Bishop(true, 5, 0));
+    this.whiteTeam.push(new Knight(true, 6, 0));
+    this.whiteTeam.push(new Rook(true, 7, 0));
     //Black Team
-    // this.blackTeam.push(new Rook(false, 0, 7));
-    // this.blackTeam.push(new Knight(false, 1, 7));
-    // this.blackTeam.push(new Bishop(false, 2, 7));
-    // this.blackTeam.push(new Queen(false, 4, 7));
-    // this.blackTeam.push(new King(false, 3, 7));
-    // this.blackTeam.push(new Bishop(false, 5, 7));
-    // this.blackTeam.push(new Knight(false, 6, 7));
-    // this.blackTeam.push(new Rook(false, 7, 7));
+    this.blackTeam.push(new Rook(false, 0, 7));
+    this.blackTeam.push(new Knight(false, 1, 7));
+    this.blackTeam.push(new Bishop(false, 2, 7));
+    this.blackTeam.push(new Queen(false, 4, 7));
+    this.blackTeam.push(new King(false, 3, 7));
+    this.blackTeam.push(new Bishop(false, 5, 7));
+    this.blackTeam.push(new Knight(false, 6, 7));
+    this.blackTeam.push(new Rook(false, 7, 7));
 
-    // this.whiteKing = this.whiteTeam[4];
-    // this.blackKing = this.blackTeam[4];
-    //
-    // for (var i = 0; i < 8; i++) {
-    //     this.whiteTeam.push(new Pawn(true, i, 1));
-    //     this.blackTeam.push(new Pawn(false, i, 6));
-    // }// Add pawns to both teams
-    //
+    this.whiteKing = this.whiteTeam[4];
+    this.blackKing = this.blackTeam[4];
+
+    for (var i = 0; i < 8; i++) {
+        this.whiteTeam.push(new Pawn(true, i, 1));
+        this.blackTeam.push(new Pawn(false, i, 6));
+    }// Add pawns to both teams
+
      for (var i = 0; i < this.whiteTeam.length; i++) {
          this.set(this.whiteTeam[i]);
-         //this.set(this.blackTeam[i]);
+         this.set(this.blackTeam[i]);
     }//Add teams to the board
-    this.set(this.blackKing);
+    //this.set(this.blackKing);
     //this.print();
     //this.moveCamera();
 }
@@ -165,7 +166,7 @@ Board.prototype.makeMove = function (isWhite, let1, num1, let2, num2) {
             this.lightUp = [];
             this.moveCamera();
             if (this.checkmate(this.whiteTurn)) {
-                alert("Checkmate!");
+                this.isCheckmate = true;
             }
         } else {
             console.log("Invalid Move! Cannot move there!");
@@ -310,35 +311,37 @@ Board.prototype.selectedPiece = function (letter,number) {
 
 Board.prototype.clickMove = function () {
     //this.drawColor();
-    renderColor();
-    gl.flush();
-    gl.finish();
-    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    if (!this.isCheckmate) {
+        renderColor();
+        gl.flush();
+        gl.finish();
+        gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
 
-    var data = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
-    var data = new Uint8Array(4);
-    gl.readPixels(mouseState.x - mouseState.canvasPosition[0],(mouseState.canvasPosition[1] + gl.drawingBufferHeight) - mouseState.y,1,1,gl.RGBA,gl.UNSIGNED_BYTE, data);
-    var colorClicked = vec4();
+        var data = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+        var data = new Uint8Array(4);
+        gl.readPixels(mouseState.x - mouseState.canvasPosition[0], (mouseState.canvasPosition[1] + gl.drawingBufferHeight) - mouseState.y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, data);
+        var colorClicked = vec4();
 
-    var letter = data[0];
-    var number = data[1];
-    if (letter <= 7 && number <= 7) {
-        if (this.selected != null) {
-            if (this.get(letter,number).isWhite === this.whiteTurn) {
-                this.lightUp = [];
-                this.selectedPiece(letter, number);
+        var letter = data[0];
+        var number = data[1];
+        if (letter <= 7 && number <= 7) {
+            if (this.selected != null) {
+                if (this.get(letter, number).isWhite === this.whiteTurn) {
+                    this.lightUp = [];
+                    this.selectedPiece(letter, number);
+                } else {
+                    this.makeMove(this.whiteTurn, this.selected.letter, this.selected.number, letter, number);
+                }
             } else {
-                this.makeMove(this.whiteTurn,this.selected.letter,this.selected.number,letter, number);
+                this.selectedPiece(letter, number);
             }
         } else {
-            this.selectedPiece(letter, number);
+            this.selected = null;
+            this.lightUp = [];
         }
-    } else {
-        this.selected = null;
-        this.lightUp = [];
-    }
 
-    render();
+        render();
+    }
 };
 
 Board.prototype.moveCamera = function () {
@@ -376,8 +379,8 @@ Board.prototype.checkmate = function (isWhite) {
         for (var i = 0; i < friendTeam.length; i++) {
             var piece = friendTeam[i];
             var moves = piece.canMove(this);
-            for (var j = 0; j <= moves; j++) {
-                if (!this.moveResultsInCheck(piece, piece.letter, piece.number, moves[0], moves[1])) {
+            for (var j = 0; j < moves.length; j++) {
+                if (!this.moveResultsInCheck(piece, piece.letter, piece.number, moves[j][0], moves[j][1])) {
                     checkmate = false;
                     break;
                 }
@@ -397,7 +400,9 @@ Board.prototype.moveResultsInCheck = function (piece, let1, num1, let2, num2) {
     var enemyTeam = piece.isWhite ? this.blackTeam : this.whiteTeam;
     var friendKing = piece.isWhite ? this.whiteKing : this.blackKing;
     var testBoard = this.copy();
-    var enemyIndex = enemyTeam.indexOf(testBoard.get(let2,num2));
+    console.log(testBoard);
+    var enemyPiece = testBoard.get(let2, num2);
+    var enemyIndex = enemyPiece === 0 ? -1 : enemyTeam.indexOf(enemyPiece);
     piece.letter = let2;
     piece.number = num2;
     testBoard.set(piece);

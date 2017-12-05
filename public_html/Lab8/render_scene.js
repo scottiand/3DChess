@@ -133,6 +133,8 @@ function shaderSetup() {
 
 function render() {
 
+    updateHTML();
+
     gl.useProgram(program);
     shaderCheck = true;
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -153,9 +155,29 @@ function render() {
     gl.uniform1f(uColorMode,1);
     board.draw();//chessboard
 
-
 }
 
+function updateHTML(){
+    if (board.whiteTurn) {
+        document.getElementById("turnMarker").innerText = "White Turn";
+    } else {
+        document.getElementById("turnMarker").innerText = "Black Turn";
+    }
+    if (board.isCheckmate) {
+        document.getElementById("checkMarker").innerText = "Checkmate!";
+    } else {
+        if (board.isInCheck(board.whiteTurn)) {
+            document.getElementById("checkMarker").innerText = "Check!";
+        } else {
+            document.getElementById("checkMarker").innerText = "";
+        }
+    }
+}
+
+function newGame () {
+    board = new Board();
+    render();
+}
 
 function renderColor () {
     gl.useProgram(programColor);
@@ -169,7 +191,6 @@ function renderColor () {
 
     stack.clear();
     stack.multiply(viewMat);
-
 
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
