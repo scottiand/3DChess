@@ -30,6 +30,7 @@ var adele;
 var spots;
 var beyonce;
 var spotlight;
+var wood;
 
 
 
@@ -88,6 +89,7 @@ function initTextures() {
     beyonce = new ImageTexture("textures/beyonce512.jpg");
     spots = new Spots(6,20);
     spotlight = new Spots(3,1);
+    wood = new ImageTexture("textures/wood_017c.jpg");
 }
 
 /**
@@ -126,9 +128,6 @@ function shaderSetup() {
     pickingColor = gl.getUniformLocation(programColor,"pickingColor");
     uModel_viewColor = gl.getUniformLocation(programColor, "uModel_viewColor");
     uProjectionColor = gl.getUniformLocation(programColor, "uProjectionColor");
-
-
-
 }
 
 function render() {
@@ -153,6 +152,7 @@ function render() {
     stack.clear(); //reclear stack because of some weird stack pushing issue in train.js
     stack.multiply(viewMat);
     gl.uniform1f(uColorMode,1);
+    //wood.activate();
     board.draw();//chessboard
 
 }

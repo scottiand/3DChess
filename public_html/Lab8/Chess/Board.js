@@ -196,11 +196,14 @@ Board.prototype.draw = function () {
 
     this.drawBoard();
     this.drawPieces();
+    this.drawGraveyard();
 
     stack.pop();
 };
 
 Board.prototype.drawBoard = function () {
+    this.drawBorder();
+    gl.uniform1f(uColorMode,1);
 
     stack.push();
     stack.multiply(scalem(1,0.25,1));
@@ -234,6 +237,51 @@ Board.prototype.drawBoard = function () {
     stack.pop();
 };
 
+Board.prototype.drawBorder = function() {
+    stack.push();
+    gl.uniform1f(uColorMode,2);
+    wood.activate();
+
+    stack.push();
+    stack.multiply(translate(-7,0,-2));
+    stack.multiply(scalem(10,0.5,1));
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-7,0,16));
+    stack.multiply(scalem(10,0.5,1));
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(2,0,7));
+    stack.multiply(rotateY(90));
+    stack.multiply(scalem(8,0.5,1));
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-16,0,7));
+    stack.multiply(rotateY(90));
+    stack.multiply(scalem(8,0.5,1));
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-7,-0.4,7));
+    stack.multiply(scalem(8,0.1,8));
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.pop();
+};
+
 Board.prototype.drawPieces = function () {
     stack.push();
     stack.multiply(translate(0,0.2,0,1));
@@ -257,6 +305,93 @@ Board.prototype.drawPieces = function () {
 
         }
     }
+    stack.pop();
+};
+
+Board.prototype.drawGraveyard = function () {
+    gl.uniform1f(uColorMode,1);
+    stack.push();
+    stack.multiply(translate(9,0,0));
+
+    this.drawGraveBox(this.whiteTaken);
+    stack.multiply(translate(-32,0,14));
+    stack.multiply(rotateY(180));
+    this.drawGraveBox(this.blackTaken);
+
+    stack.pop();
+};
+
+Board.prototype.drawGraveBox = function (list) {
+    gl.uniform1f(uColorMode,1);
+    stack.push();
+    stack.multiply(translate(0, 0.2, 0));
+    for (var i = 0; i < 16; i++) {
+        if (list.length > i) {
+            stack.push();
+            var j = i;
+            if (i > 7) {
+                stack.multiply(translate(-2, 0, 0));
+                j = i - 8;
+            }
+            stack.multiply(translate(0, 0, j * 2));
+
+            if (list[i].isWhite) {
+                gl.uniform4fv(uColor,whitePiece);
+            } else {
+                gl.uniform4fv(uColor,blackPiece);
+            }
+            gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+            list[i].model.draw();
+            console.log("reached");
+
+            stack.pop();
+        }
+    } // Draw pieces
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-1,0,7));
+    stack.multiply(scalem(2,0.25,8));
+    gl.uniform4fv(uColor,blackSpace);
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    gl.uniform1f(uColorMode,2);
+    wood.activate();
+
+    stack.push();
+    stack.multiply(translate(-1,0.25,-1));
+    stack.multiply(scalem(3,0.75,0.5));
+    gl.uniform4fv(uColor,blackSpace);
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-1,0.25,15));
+    stack.multiply(scalem(3,0.75,0.5));
+    gl.uniform4fv(uColor,blackSpace);
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(1.5,0.25,7));
+    stack.multiply(rotateY(90));
+    stack.multiply(scalem(8,0.75,0.5));
+    gl.uniform4fv(uColor,blackSpace);
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
+    stack.pop();
+
+    stack.push();
+    stack.multiply(translate(-3.5,0.25,7));
+    stack.multiply(rotateY(90));
+    stack.multiply(scalem(8,0.75,0.5));
+    gl.uniform4fv(uColor,blackSpace);
+    gl.uniformMatrix4fv(uModel_view, false, flatten(stack.top()));
+    Shapes.drawPrimitive(Shapes.cube);
     stack.pop();
 };
 

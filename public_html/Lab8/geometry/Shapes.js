@@ -44,7 +44,7 @@ Shapes.grab = function (shape, filename) {
         for (var i in dae.geometries) {
             for (var j = 0; j < dae.geometries[i].length; j++) {
 
-                Shapes.initBuffers (dae.geometries[i][j]); // Initialize GL buffers.
+                Shapes.initBuffersNoTexture (dae.geometries[i][j]); // Initialize GL buffers.
             }
         }
         dae.ready = true; // Set ready flag, so we know we can draw this now.
@@ -78,13 +78,35 @@ Shapes.initBuffers = function (primitive) {
 
     // SET UP ARRAY BUFFER FOR VERTEX TEXCOORDS 
     ////////////////////////////////////////////////////////////
-    //primitive.texBuffer = gl.createBuffer();
-    //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
-    //gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.texCoords), gl.STATIC_DRAW);
+    primitive.texBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.texCoords), gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null); // done with this buffer
+
+};
+
+Shapes.initBuffersNoTexture = function (primitive) {
+
+    // SET UP ARRAY BUFFER FOR VERTICES
+    ////////////////////////////////////////////////////////////
+    primitive.vertexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, primitive.vertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.vertices), gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null); // done with this buffer
+
+    // SET UP ARRAY BUFFER FOR VERTEX COLORS
+    ////////////////////////////////////////////////////////////
+    //primitive.colorBuffer = gl.createBuffer();
+    //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.colorBuffer);
+    //gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.colors), gl.STATIC_DRAW);
     //gl.bindBuffer(gl.ARRAY_BUFFER, null); // done with this buffer
 
-
-
+    // SET UP ARRAY BUFFER FOR VERTEX NORMALS
+    ////////////////////////////////////////////////////////////
+    primitive.normalBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, primitive.normalBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(primitive.normals), gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null); // done with this buffer
 };
 
 Shapes.drawPrimitive = function (primitive) {
@@ -102,24 +124,26 @@ Shapes.drawPrimitive = function (primitive) {
         gl.enableVertexAttribArray(vNormal);
         gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
 
-        //gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
-        //gl.enableVertexAttribArray(vTexCoords);
-        //gl.vertexAttribPointer(vTexCoords, 2, gl.FLOAT, false, 0, 0);
+        if (primitive.texBuffer) {
+            gl.bindBuffer(gl.ARRAY_BUFFER, primitive.texBuffer);
+            gl.enableVertexAttribArray(vTexCoords);
+            gl.vertexAttribPointer(vTexCoords, 2, gl.FLOAT, false, 0, 0);
+        } else {
+            gl.disableVertexAttribArray (vTexCoords);
+        }
 
         gl.drawArrays(gl.TRIANGLES, 0, primitive.numVertices);
 
         gl.disableVertexAttribArray(vPosition);
         //gl.disableVertexAttribArray(vColor);
         gl.disableVertexAttribArray(vNormal);
-        //gl.disableVertexAttribArray(vTexCoords);
+        gl.disableVertexAttribArray(vTexCoords);
     } else{
         gl.bindBuffer(gl.ARRAY_BUFFER, primitive.vertexBuffer);
         gl.enableVertexAttribArray(vColorPos);
         gl.vertexAttribPointer(vColorPos, 4, gl.FLOAT, false, 0, 0);
         gl.drawArrays(gl.TRIANGLES, 0, primitive.numVertices);
         gl.disableVertexAttribArray(vColorPos);
-
-
     }
 
     gl.bindBuffer(gl.ARRAY_BUFFER, null);

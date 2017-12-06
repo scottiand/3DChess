@@ -108,14 +108,14 @@ function setMouseEventHandler() {
  * @return {undefined}
  */
 function setKeyEventHandler() {
-    window.onkeydown = function (e) {
-        var c = String.fromCharCode(e.keyCode);
-        camera.keyAction(c);
-        lighting.keyAction(c);
-        board.keyAction(e.keyCode);
-        document.getElementById("keypress").innerHTML = "<b>Key pressed:</b> " + c + "<br>";
-        render();
-    };
+    // window.onkeydown = function (e) {
+    //     var c = String.fromCharCode(e.keyCode);
+    //     camera.keyAction(c);
+    //     lighting.keyAction(c);
+    //     board.keyAction(e.keyCode);
+    //     document.getElementById("keypress").innerHTML = "<b>Key pressed:</b> " + c + "<br>";
+    //     render();
+    // };
 }
 
 function getPosition(el) {

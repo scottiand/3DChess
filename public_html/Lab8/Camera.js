@@ -166,7 +166,7 @@ Camera.prototype.tumble = function (rx, ry) {
 
 Camera.prototype.keyAction = function (key) {
     var alpha = 180.0;  // used to control the amount of a turn during the flythrough
-    switch (key) {     // different keys should be used because these do things in browser
+   // switch (key) {     // different keys should be used because these do things in browser
         // case 'E':  // turn right
         //     console.log("turn right");
         //     this.viewRotation = mult(rotateY(-alpha), this.viewRotation);
@@ -199,9 +199,9 @@ Camera.prototype.keyAction = function (key) {
         //     console.log("move backward");
         //     this.eye = add(this.eye, this.viewRotation[2]); //subtract the n vector from eye position.
         //     break;
-        case 'R':  //  reset
-            console.log("reset");
-            this.reset();
-            break;
-    }
+       // case 'R':  //  reset
+            //console.log("reset");
+         //   this.reset();
+            //break;
+    //}
 };
